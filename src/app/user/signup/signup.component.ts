@@ -21,7 +21,7 @@ export class SignupComponent {
       firstName: ['', Validators.required],
       lastName :['',Validators.required],
       email: ['', [Validators.required, Validators.email]], 
-      password :['',Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       organization :['',Validators.required],
       contactDetails : ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });

@@ -33,6 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.errorMessage = 'An error occurred. Please try again later.';
       }
     );
+    
 
     
   }
