@@ -1,1 +1,30 @@
-<p>signin works!</p>
+<div class="background">
+    <div class="card">
+      <h1>Sign In</h1>
+  
+<form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" placeholder="Email" name="email" id="email" formControlName="email"
+        [ngClass]="{'error': getControl('email')?.errors && getControl('email')?.touched}">
+    
+        <span style="color: red;"
+          *ngIf="signinForm.get('email')?.errors?.['required'] && (signinForm.get('email')?.dirty || signinForm.get('email')?.touched)"><br>
+          Email is required.
+        </span>
+        <br>
+        <span *ngIf="getControl('email')?.errors?.['email']" style="color: red;">Please enter a valid email address.</span>
+    </div>
+    <div>
+      <input type="text" placeholder="Password" name="password" id="password" formControlName="password"
+      [ngClass]="{'error': getControl('password')?.errors && getControl('password')?.touched}">
+  
+      <span style="color: red;"
+        *ngIf="signinForm.get('password')?.errors?.['required'] && (signinForm.get('password')?.dirty || signinForm.get('password')?.touched)"><br>
+        Password is required.
+      </span>
+     
+    </div>
+    <button type="submit"[disabled]="signinForm.invalid">Sign In</button>
+  </form>
+</div>
+</div>
