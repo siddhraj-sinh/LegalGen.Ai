@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -8,15 +9,66 @@ import { Observable, map } from 'rxjs';
 export class UserService {
   url = 'https://localhost:7024/api/User';
   private currentUserKey = 'currentUser';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
 
   addUser(user: any): Observable<any> {
     return this.http.post(this.url, user);
   }
 
+
   getUserById(id: any): Observable<any> {
     return this.http.get(`${this.url}/${id}`);
   }
+
+  signin(email: string, password: string): Observable<any> {
+    const url = `${this.url}/signin`;
+    const body = {
+      email: email,
+      password: password
+    };
+
+    return this.http.post(url, body);
+  }
+  saveToken(token: string): void {
+    localStorage.setItem('accessToken', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('accessToken');
+  }
+
+  removeToken(): void {
+    localStorage.removeItem('accessToken');
+  }
+
+  login(email: string, password: string): void {
+    this.signin(email, password).subscribe(
+      (response) => {
+        const token = response.accessToken;
+        this.saveToken(token);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log('Login failed. Please try again.'); // Handle error
+      }
+    );
+  }
+  logout(): Observable<any> {
+    const url = `${this.url}/signout`;
+  
+    // Get the access token from the local storage
+    const token = localStorage.getItem('accessToken');
+  
+    // Create headers and add the token
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+  
+    // Make a POST request to the logout endpoint with headers
+    return this.http.post(url, null, { headers: headers });
+  }
+  
 
   loginUser(email: string, password: string): Observable<boolean> {
     interface User {
