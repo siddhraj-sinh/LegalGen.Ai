@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent },
    { path: 'signin', component: SigninComponent },
-   {path:'forgot-password',component:ForgotPasswordComponent}
+   {path:'forgot-password',component:ForgotPasswordComponent},
+   {path:'reset-password/:token',component:UpdatePasswordComponent}
 ];
 
 @NgModule({
