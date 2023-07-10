@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-forgot-password',
@@ -35,6 +35,9 @@ export class ForgotPasswordComponent implements OnInit {
     );
 
     
+  }
+  getControl(name:any):AbstractControl | null{
+    return this.forgotPasswordForm.get(name);
   }
 }
 

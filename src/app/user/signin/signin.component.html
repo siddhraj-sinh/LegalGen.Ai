@@ -22,8 +22,12 @@
         *ngIf="signinForm.get('password')?.errors?.['required'] && (signinForm.get('password')?.dirty || signinForm.get('password')?.touched)"><br>
         Password is required.
       </span>
+      <div class="signin-link" style=" text-align: right;">
+         <a routerLink="/user/forgot-password"><b>Forget Password</b></a>
+      </div>
      
     </div>
+    <br>
     <button type="submit"[disabled]="signinForm.invalid">Sign In</button>
     <div class="signin-link">
         Don't have an account? <a routerLink="/user/signup"><b>Sign Up</b></a>
