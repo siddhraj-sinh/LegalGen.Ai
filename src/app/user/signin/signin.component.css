@@ -1,5 +1,5 @@
 .background {
-    background-color: #047BD5;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@
   button {
     width: 120px;
     padding: 10px;
-    background-color: #4caf50;
+    background-color: #26A700;
     color: #ffffff;
     border: none;
     border-radius: 3px;
@@ -81,4 +81,7 @@
   }
   .error {
     border: 1px solid red;
+  }
+  .signin-link-for{
+    color: #959595;
   }

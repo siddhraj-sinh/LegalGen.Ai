@@ -1,0 +1,35 @@
+.bg {
+    background-color: #0A004D;
+    display: flex;
+    flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+}
+h1 {
+    color: white;
+}
+h4{
+    color: gray;
+    padding: 11px;
+    margin-top: -18px;
+}
+.img {
+    height: 100px;
+    width: 50px;
+}
+div button{
+    color: white;
+    background-color: #26A700;
+    height: 30px;
+    width: 200px;
+}
+
+
+
+
+
+
+
+
+
