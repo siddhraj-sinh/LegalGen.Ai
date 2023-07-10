@@ -1,0 +1,50 @@
+<h2>Create Research Book</h2>
+<form [formGroup]="researchBookForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="text" placeholder="ID" name="ID" id="ID" formControlName="ID"
+    [ngClass]="{'error': getControl('ID')?.errors && getControl('ID')?.touched}">
+
+    <span style="color: red;"
+      *ngIf="researchBookForm.get('ID')?.errors?.['required'] && (researchBookForm.get('ID')?.dirty || researchBookForm.get('ID')?.touched)"><br>
+      Email is required.
+    </span>
+    <br>
+    <span *ngIf="getControl('ID')?.errors?.['ID']" style="color: red;">Please enter a valid email address.</span>
+</div>
+<div>
+  <input type="text" placeholder="Name" name="Name" id="Name" formControlName="Name"
+  [ngClass]="{'error': getControl('Name')?.errors && getControl('Name')?.touched}">
+
+  <span style="color: red;"
+    *ngIf="researchBookForm.get('Name')?.errors?.['required'] && (researchBookForm.get('Name')?.dirty || researchBookForm.get('Name')?.touched)"><br>
+    Email is required.
+  </span>
+  <br>
+  <span *ngIf="getControl('Name')?.errors?.['Name']" style="color: red;">Please enter a valid email address.</span>
+</div>
+<div>
+  <input type="datetime" placeholder="DateCreated" name="Name" id="DateCreated" formControlName="DateCreated"
+  [ngClass]="{'error': getControl('Name')?.errors && getControl('Name')?.touched}">
+
+  <span style="color: red;"
+    *ngIf="researchBookForm.get('DateCreated')?.errors?.['required'] && (researchBookForm.get('DateCreated')?.dirty || researchBookForm.get('DateCreated')?.touched)"><br>
+    Email is required.
+  </span>
+  <br>
+  <span *ngIf="getControl('DateCreated')?.errors?.['DateCreated']" style="color: red;">Please enter a valid email address.</span>
+</div>
+<div>
+  <input type="datetime" placeholder="LastModified" name="Name" id="LastModified" formControlName="LastModified"
+  [ngClass]="{'error': getControl('Name')?.errors && getControl('Name')?.touched}">
+
+  <span style="color: red;"
+    *ngIf="researchBookForm.get('LastModified')?.errors?.['required'] && (researchBookForm.get('LastModified')?.dirty || researchBookForm.get('LastModified')?.touched)"><br>
+    Email is required.
+  </span>
+  <br>
+  <span *ngIf="getControl('LastModified')?.errors?.['LastModified']" style="color: red;">Please enter a valid email address.</span>
+</div>
+
+  <button type="submit" [disabled]="researchBookForm.invalid">Create</button>
+</form>
+
