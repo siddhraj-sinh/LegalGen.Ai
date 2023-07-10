@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable,map } from 'rxjs';
 
 @Injectable({
@@ -42,9 +42,22 @@ export class UserService {
     return this.http.get<any>(this.url);
    }
    forgotPassword(email: string): Observable<any> {
-    const url = `${this.url}/forgot-password`;
-    const body = { email };
+    const url = `${this.url}/forgot-password?email=${email}`;
+    const body = {  };
 
     return this.http.post(url, body);
+  }
+  updatePassword(token: string, password: string): Observable<any> {
+    const url = `${this.url}/update-password`;
+    const body = {
+      token: token,
+      password: password
+    };
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    console.log(body);
+    return this.http.post(url, body,{ headers: headers });
   }
 }
