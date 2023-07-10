@@ -26,16 +26,19 @@ export class SigninComponent implements OnInit {
       console.log('Email:', email);
       console.log('Password:', password);
 
-     this.userService.loginUser(email,password) .subscribe(isValid => {
-      if (isValid) {
-        console.log('Sign-in successful');
-        this.router.navigateByUrl("/home");
-        // Redirect or perform any additional actions
-      } else {
-        console.log('Invalid credentials');
-        // Handle invalid credentials, show error message, etc.
-      }
-    });;
+
+      this.userService.login(email,password);
+    //  this.userService.loginUser(email,password) .subscribe(isValid => {
+    //   if (isValid) {
+    //     console.log('Sign-in successful');
+    //     this.router.navigateByUrl("/home");
+    //     // Redirect or perform any additional actions
+    //   } else {
+    //     console.log('Invalid credentials');
+    //     // Handle invalid credentials, show error message, etc.
+    //   }
+    // });;
+
     }
   }
   getControl(name:any):AbstractControl | null{
