@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import{AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators,ValidatorFn, ValidationErrors}from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-password',
@@ -8,7 +10,13 @@ import{AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators,
 })
 export class UpdatePasswordComponent {
   updateForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+  successMessage?: string;
+  errorMessage?: string;
+  token!:string;
+  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute,private userService:UserService) {
+   
+    this.token = this.router.snapshot.params['token'];
+  }
 
   ngOnInit(): void {
     this.updateForm = this.formBuilder.group({
@@ -40,10 +48,17 @@ export class UpdatePasswordComponent {
 
   onSubmit(): void {
     if (this.updateForm.valid) {
-      const { email, password } = this.updateForm.value;
+      const { newPassword } = this.updateForm.value;
       // Add your sign-in logic here, such as calling an authentication service
-      console.log('Email:', email);
-      console.log('Password:', password);
+    
+      this.userService.updatePassword(this.token,newPassword).subscribe((res)=>{
+        this.successMessage = 'Password updated successfully.';
+        this.errorMessage = '';
+        this.updateForm.reset();   
+      },(error)=>{
+        this.successMessage = '';
+        this.errorMessage = 'An error occurred. Please try again later.';
+      });
     }
   }
   
