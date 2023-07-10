@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class SigninComponent {
 
+  constructor(private userService:UserService){
+    
+  }
 }
