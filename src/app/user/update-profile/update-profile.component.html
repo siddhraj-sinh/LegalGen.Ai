@@ -1,0 +1,24 @@
+<form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" formControlName="firstName" />
+    </div>
+    
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" formControlName="lastName" />
+    </div>
+    
+    <div>
+      <label for="organization">Organization:</label>
+      <input type="text" id="organization" formControlName="organization" />
+    </div>
+    
+    <div>
+      <label for="contactDetails">Contact Details:</label>
+      <textarea id="contactDetails" formControlName="contactDetails"></textarea>
+    </div>
+    
+    <button type="submit" [disabled]="updateProfileForm.invalid">Update</button>
+  </form>
+  
