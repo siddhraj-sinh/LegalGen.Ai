@@ -18,4 +18,10 @@ export class UserService {
    getAllUser():Observable<any[]>{
     return this.http.get<any>(this.url);
    }
+   forgotPassword(email: string): Observable<any> {
+    const url = `${this.url}/forgot-password`;
+    const body = { email };
+
+    return this.http.post(url, body);
+  }
 }
