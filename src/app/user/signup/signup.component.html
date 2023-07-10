@@ -21,6 +21,7 @@
             *ngIf="signupForm.get('password')?.errors?.['required'] && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
             Password is required.
           </span>
+          <span *ngIf="getControl('password')?.errors?.['minlength']" style="color: red;">Password must contain 6 characters</span>
          
           <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
           [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}">
