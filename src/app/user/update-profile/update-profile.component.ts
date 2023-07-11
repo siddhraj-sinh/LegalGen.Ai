@@ -16,8 +16,8 @@ export class UpdateProfileComponent {
     this.updateProfileForm = new FormGroup({
       firstName: new FormControl('',Validators.required),
       lastName:  new FormControl('',Validators.required),
-      organization:  new FormControl(''),
-      contactDetails:  new FormControl('')
+      organization:  new FormControl('',Validators.required),
+      contactDetails:  new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
     });
 
     this.getCurrentUser();

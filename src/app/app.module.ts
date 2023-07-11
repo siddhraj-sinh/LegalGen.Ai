@@ -7,12 +7,14 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ResearchDashboardComponent } from './pages/research-dashboard/research-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ResearchDashboardComponent
   ],
   imports: [
     BrowserModule,
