@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './update-profile.component.html',
   styleUrls: ['./update-profile.component.css']
 })
-export class UpdateProfileComponent {
+export class UpdateProfileComponent implements OnInit {
   updateProfileForm!:FormGroup
   user: any;
 
@@ -20,11 +20,26 @@ export class UpdateProfileComponent {
       contactDetails:  new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
     });
 
-    this.getCurrentUser();
+   // this.getCurrentUser();
+  }
+  ngOnInit(): void {
+    this.userService.getUserByToken().subscribe((res)=>{
+      this.user=res;
+      console.log(res);
+      this.updateProfileForm.patchValue({
+        id:res.id,
+        email:res.email,
+        password:res.password,
+        firstName: this.user.firstName,
+        lastName:this.user.lastName,
+        organization:this.user.organization,
+        contactDetails: this.user.contactDetails
+      });
+     })
   }
   getCurrentUser() {
-    const userId =1;
-    this.userService.getUserById(userId).subscribe((res)=>{
+   
+    this.userService.getUserById(this.user.id).subscribe((res)=>{
       console.log(res);
         this.user=res;
         console.log(this.user);
@@ -43,18 +58,19 @@ export class UpdateProfileComponent {
   }
 
   onSubmit(){
-    const userId =1;
     const updatedUser = {
-      id:userId,
+      id:this.user.id,
+        email:this.user.email,
+        password:this.user.password,
       firstName: this.updateProfileForm.value.firstName,
       lastName: this.updateProfileForm.value.lastName,
       organization: this.updateProfileForm.value.organization,
       contactDetails:this.updateProfileForm.value.contactDetails
     };
     console.log(updatedUser);
-    this.userService.updateUserDetails(userId,updatedUser).subscribe(() => {
+    this.userService.updateUserDetails(this.user.id,updatedUser).subscribe(() => {
       // Handle success
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
       console.log('Profile updated successfully!');
     });
   }
