@@ -90,8 +90,8 @@ header {
     flex-direction: column;
     align-items: start; /* Update this line */
     justify-content: center;
-    width: 200px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
+    width: 180px; /* Adjust the width as needed */
+    height: 180px; /* Adjust the height as needed */
     border: 1px solid #ccc;
     background-color: #EEEEEE;
     border-radius: 10px;
@@ -106,4 +106,72 @@ header {
   }
   
   
-   
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes modalFadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+  
+  .modal-content {
+    animation-name: modalFadeIn;
+  }
+  
+  .modal-content.ng-leave {
+    animation-name: modalFadeOut;
+  }
+
+  .button {
+    width: 60%;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #26A700;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+ 
