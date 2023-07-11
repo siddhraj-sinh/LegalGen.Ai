@@ -70,7 +70,7 @@ export class UpdateProfileComponent implements OnInit {
     console.log(updatedUser);
     this.userService.updateUserDetails(this.user.id,updatedUser).subscribe(() => {
       // Handle success
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
       console.log('Profile updated successfully!');
     });
   }

@@ -55,6 +55,7 @@ export class ResearchDashboardComponent implements OnInit{
 
   logout(){
     this.userService.logout().subscribe((res)=>{
+      this.userService.removeToken();
       this.router.navigate(['/user/signin']);
     },(error)=>{
       console.log('Logout error',error);
