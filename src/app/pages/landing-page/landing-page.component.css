@@ -18,17 +18,25 @@ h4{
     height: 100px;
     width: 50px;
 }
-div button{
-    color: white;
+button {
+    width: 120px;
+    padding: 10px;
+    background-color: #45a049;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+
+
+  button:hover {
     background-color: #26A700;
-    height: 30px;
-    width: 200px;
-}
-
-
-
-
-
+  }
 
 
 
