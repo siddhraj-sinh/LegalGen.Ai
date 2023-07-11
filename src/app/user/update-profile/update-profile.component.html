@@ -1,24 +1,46 @@
+<div class="background">
+  <div class="card">
+    <h2 >Update Profile </h2>
 <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" formControlName="firstName" />
-    </div>
-    
-    <div>
-      <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" formControlName="lastName" />
-    </div>
-    
-    <div>
-      <label for="organization">Organization:</label>
-      <input type="text" id="organization" formControlName="organization" />
-    </div>
-    
-    <div>
-      <label for="contactDetails">Contact Details:</label>
-      <textarea id="contactDetails" formControlName="contactDetails"></textarea>
-    </div>
-    
-    <button type="submit" [disabled]="updateProfileForm.invalid">Update</button>
-  </form>
-  
+  <div class="formGroup">
+    <label for="firstName"></label>
+    <input type="text" id="firstName" formControlName="firstName" placeholder="First Name" [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}"/>
+    <span style="color: red;"
+    *ngIf="updateProfileForm.get('firstName')?.errors?.['required'] && (updateProfileForm.get('firstName')?.dirty || updateProfileForm.get('firstName')?.touched)"><br>
+   First Name is required.
+  </span>
+  </div>
+
+  <div>
+    <label for="lastName"></label>
+    <input type="text" id="lastName" formControlName="lastName" placeholder="Last Name" [ngClass]="{'error': getControl('lastName')?.errors && getControl('lastName')?.touched}" />
+    <span style="color: red;"
+    *ngIf="updateProfileForm.get('lastName')?.errors?.['required'] && (updateProfileForm.get('lastName')?.dirty || updateProfileForm.get('lastName')?.touched)"><br>
+  Last Name is required.
+  </span>
+  </div>
+
+  <div>
+    <label for="organization"></label>
+    <input type="text" id="organization" formControlName="organization" placeholder="Organization Name" [ngClass]="{'error': getControl('organization')?.errors && getControl('organization')?.touched}" />
+    <span style="color: red;"
+    *ngIf="updateProfileForm.get('organization')?.errors?.['required'] && (updateProfileForm.get('organization')?.dirty || updateProfileForm.get('organization')?.touched)"><br>
+  Organization is required.
+  </span>
+  </div>
+
+  <div>
+    <label for="contactDetails"></label>
+    <input type="text" id="contactDetails" formControlName="contactDetails" placeholder="Phone Number" [ngClass]="{'error': getControl('contactDetails')?.errors && getControl('contactDetails')?.touched}" />
+    <span style="color: red;"
+    *ngIf="updateProfileForm.get('contactDetails')?.errors?.['required'] && (updateProfileForm.get('contactDetails')?.dirty || updateProfileForm.get('contactDetails')?.touched)"><br>
+  Phone Number is required.
+  </span><br>
+<span *ngIf="getControl('contactDetails')?.errors?.['pattern']" style="color: red;">Please enter a valid Phone Number.</span>
+  </div>
+
+  <button type="submit" [disabled]="updateProfileForm.invalid">Update</button>
+
+</form>
+</div>
+</div>
