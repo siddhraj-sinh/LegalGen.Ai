@@ -10,6 +10,9 @@ import { UserService } from 'src/app/services/user.service';
 export class ResearchDashboardComponent implements OnInit{
 
   userName!:string;
+  isFormCardOpen: boolean = false;
+  newQuery: string = '';
+
   queries: any[] = [
     {
       title: "Query 1",
@@ -52,7 +55,20 @@ export class ResearchDashboardComponent implements OnInit{
     this.userName=res.firstName;
    })
   }
+ // Event handlers
+ openFormCard() {
+  this.isFormCardOpen = true;
+}
 
+closeFormCard() {
+  this.isFormCardOpen = false;
+}
+
+continueQuery() {
+  // Add logic to handle the query continuation
+  console.log('Continuing query:', this.newQuery);
+  this.closeFormCard();
+}
   logout(){
     this.userService.logout().subscribe((res)=>{
       this.userService.removeToken();
