@@ -1,1 +1,23 @@
-<p>home works!</p>
+
+<div class="sidebar">
+    <button class="add-project"  (click)="openAddResearchModal()">+ New Research</button>
+    <ul class="project-list">
+      <li *ngFor="let researches of research">{{ researches }}</li>
+    </ul>
+    
+  </div>
+  <div class="bg">
+    <img src="../../../assets/app_logo_2.png"><br>
+    <div>
+        <input type="text"  class="search-input"placeholder="Tell us about your query" name="email" id="email" formControlName="email" >
+        
+        <br> <select class ="options">
+            <option value="option1">Advanced Filter</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <span class="arrow"></span>
+        </div>
+          
+    </div><br>
+​
