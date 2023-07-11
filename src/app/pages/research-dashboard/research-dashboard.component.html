@@ -1,6 +1,6 @@
 <header>
     <div class="logo" style="padding-left: 90px;">
-      <img src="../../../assets/app_logo_2.png" alt="Logo">
+      <img src="../../../assets/app_logo_2.png" alt="Logo" style="cursor: pointer;">
     </div>
     <div class="profile" style="padding-right: 90px;">
       <div class="user-image">
@@ -16,4 +16,20 @@
       </div>
     </div>
   </header>
+  <div class="card-container">
+    <div class="card" style="  align-items: center;">
+
+      <i class="fas fa-plus fa-2xl"></i>
+      <p>New Query</p>
+    </div>
+    <div class="card" *ngFor="let query of queries">
+      <div class="card-icon">
+        <i class="fa-solid fa-folder fa-2xl" style="color: #fccc77;"></i>
+      </div>
+      <h3>{{ query.title }}</h3>
+      <p class="text-small">Created on: {{ query.creationDate }}</p>
+    </div>
+  </div>
+  
+  
   

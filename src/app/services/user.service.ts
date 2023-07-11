@@ -20,6 +20,23 @@ export class UserService {
     return this.http.get(`${this.url}/${id}`);
   }
 
+  getUserByToken(): Observable<any> {
+    const url = `${this.url}/user/by-token`;
+    
+    // Get the access token from the local storage
+    const token = localStorage.getItem('accessToken');
+    
+    // Create headers and add the token
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    
+    // Make a GET request to the user endpoint with headers
+    return this.http.get<any>(url, { headers: headers });
+  }
+  
+
   signin(email: string, password: string): Observable<any> {
     const url = `${this.url}/signin`;
     const body = {
