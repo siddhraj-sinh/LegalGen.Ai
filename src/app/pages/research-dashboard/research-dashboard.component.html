@@ -17,9 +17,10 @@
     </div>
   </header>
   <div class="card-container">
-    <div class="card" style="  align-items: center;">
+    <div class="card" (click)="openFormCard()" style="align-items: center;">
 
       <i class="fas fa-plus fa-2xl"></i>
+      
       <p>New Query</p>
     </div>
     <div class="card" *ngFor="let query of queries">
@@ -31,5 +32,12 @@
     </div>
   </div>
   
-  
+  <div class="modal" *ngIf="isFormCardOpen">
+    <div class="modal-content" [@modalAnimation]>
+      <h2 style="margin: 20px 40px 15px 40px;">Resarch Name</h2>
+      <input [(ngModel)]="newQuery"  placeholder="Enter your query" style="margin: 10px 40px 30px 40px; padding: 9px;height: 38px; width: 80%;"/>
+      <button (click)="continueQuery()" class="button">Continue</button>
+      <button (click)="closeFormCard()" class="button">Close</button>
+    </div>
+  </div>
   
