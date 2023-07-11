@@ -1,0 +1,117 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #0A004D;
+    padding: 20px;
+  }
+  
+  .project-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .project-list li {
+    cursor: pointer;
+    margin-bottom: 5px;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  .add-project {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    cursor: pointer;
+  }
+  
+  .add-project:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .bg {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 250px;
+  }
+  
+  .search-icon {
+    font-size: 16px;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 5px;
+  }
+  
+  .bg input {
+    width: 400px;
+    padding: 14px;
+    padding-left: 25px;
+    background-color: #eeeeee;
+    color: #141313;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .dropdown select option {
+    font-size: 3px;
+    color: #999;
+    border: none;
+  }
+  
+  .options {
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 162px;
+    color: #999;
+  }
+  
