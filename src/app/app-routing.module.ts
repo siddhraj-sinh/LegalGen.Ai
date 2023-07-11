@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ResearchDashboardComponent } from './pages/research-dashboard/research-dashboard.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "user",
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path:"dashboard",
+    component:ResearchDashboardComponent
   }
 
 ];
