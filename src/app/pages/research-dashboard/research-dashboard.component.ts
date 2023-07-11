@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResearchBookService } from 'src/app/services/research-book.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ResearchDashboardComponent implements OnInit{
   userName!:string;
   isFormCardOpen: boolean = false;
   newQuery: string = '';
-
+  user!:any;
   queries: any[] = [
     {
       title: "Query 1",
@@ -47,12 +48,13 @@ export class ResearchDashboardComponent implements OnInit{
     }
   ];
   
-  constructor(private userService:UserService,private router:Router){
-    this.userName="siddhraj"
+  constructor(private userService:UserService,private router:Router,private researchService:ResearchBookService){
+   
   }
   ngOnInit(): void {
    this.userService.getUserByToken().subscribe((res)=>{
     this.userName=res.firstName;
+    this.user=res;
    })
   }
  // Event handlers
@@ -67,6 +69,15 @@ closeFormCard() {
 continueQuery() {
   // Add logic to handle the query continuation
   console.log('Continuing query:', this.newQuery);
+  const body = {
+    name: this.newQuery,
+    dateCreated: new Date(),
+    lastModified: new Date(),
+    userId: this.user.id,
+    user:this.user
+  }
+  console.log(body);
+ this.researchService.addBook(body).subscribe((res)=>{console.log(res);})
   this.closeFormCard();
 }
   logout(){
