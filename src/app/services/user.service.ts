@@ -46,7 +46,7 @@ export class UserService {
       (response) => {
         const token = response.accessToken;
         this.saveToken(token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.log('Login failed. Please try again.'); // Handle error
