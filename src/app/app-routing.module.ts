@@ -6,12 +6,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 const routes: Routes = [
   {
     path:"",
-    redirectTo:"/user/signin",
+    component:LandingPageComponent,
     pathMatch:'full'
-   },
-   {
-     path:'landing',
-     component:LandingPageComponent
    },
   {
     path: "home",
