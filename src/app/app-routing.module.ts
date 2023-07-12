@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ResearchDashboardComponent } from './pages/research-dashboard/research-dashboard.component';
 import { AdvanceFiltersComponent } from './pages/advance-filters/advance-filters.component';
+import { authGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
    },
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate:[authGuardGuard]
   },
   {
     path: "user",
@@ -21,7 +23,8 @@ const routes: Routes = [
   },
   {
     path:"dashboard",
-    component:ResearchDashboardComponent
+    component:ResearchDashboardComponent,
+    canActivate:[authGuardGuard]
   },
   {
     path:"filter",

@@ -57,7 +57,9 @@ export class UserService {
   removeToken(): void {
     localStorage.removeItem('accessToken');
   }
-
+  isLoggedIn(): boolean {
+    return !!this.getToken(); // Check if user ID exists in local storage
+  }
   login(email: string, password: string): void {
     this.signin(email, password).subscribe(
       (response) => {
