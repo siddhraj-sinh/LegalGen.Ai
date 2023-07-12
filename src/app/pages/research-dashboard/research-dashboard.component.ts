@@ -14,48 +14,24 @@ export class ResearchDashboardComponent implements OnInit{
   isFormCardOpen: boolean = false;
   newQuery: string = '';
   user!:any;
-  queries: any[] = [
-    {
-      title: "Query 1",
-      creationDate: "2023-07-10"
-    },
-    {
-      title: "Query 2",
-      creationDate: "2023-07-09"
-    },
-    {
-      title: "Query 3",
-      creationDate: "2023-07-08"
-    },
-    
-    {
-      title: "Query 4",
-      creationDate: "2023-07-08"
-    },
-    {
-      title: "Query 5",
-      creationDate: "2023-07-08"
-    }
-    ,
-    {
-      title: "Query 6",
-      creationDate: "2023-07-08"
-    }
-    ,
-    {
-      title: "Query 7",
-      creationDate: "2023-07-08"
-    }
-  ];
-  
+  queries!: any[];
   constructor(private userService:UserService,private router:Router,private researchService:ResearchBookService){
    
   }
   ngOnInit(): void {
+
    this.userService.getUserByToken().subscribe((res)=>{
     this.userName=res.firstName;
     this.user=res;
    })
+  this.getAllResearchBook();
+  }
+
+  getAllResearchBook(){
+    this.researchService.getAllBook().subscribe((res)=>{
+      console.log(res);
+      this.queries=res;
+     })
   }
  // Event handlers
  openFormCard() {
@@ -73,8 +49,7 @@ continueQuery() {
     name: this.newQuery,
     dateCreated: new Date(),
     lastModified: new Date(),
-    userId: this.user.id,
-    user:this.user
+    userId: this.user.id
   }
   console.log(body);
  this.researchService.addBook(body).subscribe((res)=>{console.log(res);})
