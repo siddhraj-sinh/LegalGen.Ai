@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <button class="btn btn-primary add-project" (click)="openAddResearchModal()">+ New Research</button>
+    <button class="btn btn-primary add-project" (click)="openFormCard()">+ New Research</button>
     <ul class="list-group project-list">
         <li *ngFor="let researches of research" class="list-group-item">
             <div class="d-flex align-items-start">
@@ -69,3 +69,19 @@
         <div class="loading-dots--dot"></div>
     </div>
 </div>
+
+<div class="modal" *ngIf="isFormCardOpen">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" [@modalAnimation]>
+        <div class="modal-header">
+          <h2 class="modal-title">Research Name</h2>
+        </div>
+        <div class="modal-body">
+          <input [(ngModel)]="newQuery" placeholder="Enter your query" class="form-control form-control-lg bg-light border-bottom" style="height: 5rem;">
+  
+          <button (click)="continueQuery()" class="button">Continue</button>
+          <button (click)="closeFormCard()" class="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

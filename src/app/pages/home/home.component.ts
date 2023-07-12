@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AppService } from '../../app.service';
 import { MetaDataList } from './meta-data.model';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +15,9 @@ export class HomeComponent implements OnInit {
   research!: any[];
   showFilterPage: boolean=false;
  
-
- 
+  isFormCardOpen: boolean = false;
+  newQuery: string = '';
+  user!:any;
   filteredResearches: string[] = []; // Placeholder for filtered researches
   searchQuery: string = ''; // Placeholder for the search query
   openAddResearchModal() {
@@ -56,13 +58,17 @@ yearsList: any = [];
 queryForm!: FormGroup;
 courts: any = [{ name: 'Supreme Court of India' }, { name: 'High Court' }]
 
-constructor(private _FB: FormBuilder, private http: HttpClient, private service: AppService,private researchService:ResearchBookService) {
+constructor(private _FB: FormBuilder, private http: HttpClient, private service: AppService,private researchService:ResearchBookService,private userService:UserService) {
   // get defaultMetaDataList
 }
 
 ngOnInit(): void {
   this.researchService.getAllBook().subscribe((res)=>{
     this.research=res;
+   })
+   this.userService.getUserByToken().subscribe((res)=>{
+   // this.userName=res.firstName;
+    this.user=res;
    })
   this.queryForm = this._FB.group({
     queries: this._FB.array([this._FB.control('', Validators.required)]),
@@ -90,7 +96,29 @@ ngOnInit(): void {
     this.yearsList.push(startYear++);
   }
 }
+ // Event handlers
+ openFormCard() {
+  this.isFormCardOpen = true;
+}
+closeFormCard() {
+  this.isFormCardOpen = false;
+}
 
+continueQuery() {
+  // Add logic to handle the query continuation
+  console.log('Continuing query:', this.newQuery);
+  const body = {
+    name: this.newQuery,
+    dateCreated: new Date(),
+    lastModified: new Date(),
+    userId: this.user.id
+  }
+  console.log(body);
+ this.researchService.addBook(body).subscribe((res)=>{console.log(res);
+//  this.router.navigate(['/home'])
+})
+  this.closeFormCard();
+}
 get queries() {
   return this.queryForm.get('queries') as FormArray;
 }
@@ -111,7 +139,8 @@ getResultsBasedOnSearch(): void {
   const formData = this.queryForm.value;
   this.http.post(`${this.endPointUrl}api/` + `?page=${this.pageNumber}` + `&page_size=${this.pageSize}`, formData).subscribe(
     (response) => {
-      //If got response    
+      //If got response 
+      console.log(response);   
       this.service.sendResponse(response); //send response to results component
       this.loader = false; // disables the loader
       this.isResultsVisible = true;
