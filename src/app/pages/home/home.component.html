@@ -1,3 +1,4 @@
+<div class="home-content">
 <div class="sidebar">
   <button class="add-project" (click)="openAddResearchModal()">+ New Research</button>
   <ul class="project-list">
@@ -20,8 +21,15 @@
       [(ngModel)]="searchQuery" (ngModelChange)="performSearch()">
     <i class="fa fa-search search-icon" (click)="performSearch()"></i>
     <div class="advanced-filter-container">
-      <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+      <a class="advance-link" (click)="openAdvancedFilters()">Advance</a>
+      <div class="modal" *ngIf="showAdvancedFilters">
+        <div class="modal-content">
+          <app-advance-filters></app-advance-filters>
+          <button (click)="closeAdvancedFilters()" class="close-button">Close</button>
+        </div>
+      </div>
       <!--<span class="advanced-filter-label">Advanced Filters</span>-->
     </div>
   </div>
+</div>
 </div>

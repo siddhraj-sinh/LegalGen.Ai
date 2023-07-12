@@ -8,6 +8,20 @@
     
    
   }
+  .filter-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    background-color: #fff;
+    z-index: 9999;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+ 
   
   .column {
     display: flex;

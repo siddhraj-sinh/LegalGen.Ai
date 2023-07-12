@@ -9,6 +9,7 @@ import { ResearchBookService } from 'src/app/services/research-book.service';
 export class HomeComponent implements OnInit {
   research!: any[];
   showFilterPage: boolean=false;
+  showAdvancedFilters: boolean=false;
  
   constructor(private researchService:ResearchBookService){}
   ngOnInit(): void {
@@ -23,6 +24,13 @@ export class HomeComponent implements OnInit {
     // For simplicity, we will just log a message to the console.
     console.log('Add new Research');
 
+}
+openAdvancedFilters() {
+  this.showAdvancedFilters = true;
+}
+
+closeAdvancedFilters() {
+  this.showAdvancedFilters = false;
 }
 performSearch(): void {
   console.log('Search Keyword:', this.searchQuery);
