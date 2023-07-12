@@ -25,10 +25,11 @@
     </div>
     <div class="card" *ngFor="let query of queries">
       <div class="card-icon">
-        <i class="fa-solid fa-folder fa-2xl" style="color: #fccc77;"></i>
+        <i class="fa-solid fa-folder fa-lg" style="color: #fccc77; margin-top: 30px;"></i>
       </div>
-      <h3>{{ query.title }}</h3>
-      <p class="text-small">Created on: {{ query.creationDate }}</p>
+      <h4>{{ query.name }}</h4>
+      <div class="text-small"><small>{{ query.dateCreated | date }}</small>    <img src="../../../assets//arrow-up-right.svg"/></div>
+   
     </div>
   </div>
   

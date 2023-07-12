@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResearchBookService } from 'src/app/services/research-book.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,48 +13,25 @@ export class ResearchDashboardComponent implements OnInit{
   userName!:string;
   isFormCardOpen: boolean = false;
   newQuery: string = '';
-
-  queries: any[] = [
-    {
-      title: "Query 1",
-      creationDate: "2023-07-10"
-    },
-    {
-      title: "Query 2",
-      creationDate: "2023-07-09"
-    },
-    {
-      title: "Query 3",
-      creationDate: "2023-07-08"
-    },
-    
-    {
-      title: "Query 4",
-      creationDate: "2023-07-08"
-    },
-    {
-      title: "Query 5",
-      creationDate: "2023-07-08"
-    }
-    ,
-    {
-      title: "Query 6",
-      creationDate: "2023-07-08"
-    }
-    ,
-    {
-      title: "Query 7",
-      creationDate: "2023-07-08"
-    }
-  ];
-  
-  constructor(private userService:UserService,private router:Router){
-    this.userName="siddhraj"
+  user!:any;
+  queries!: any[];
+  constructor(private userService:UserService,private router:Router,private researchService:ResearchBookService){
+   
   }
   ngOnInit(): void {
+
    this.userService.getUserByToken().subscribe((res)=>{
     this.userName=res.firstName;
+    this.user=res;
    })
+  this.getAllResearchBook();
+  }
+
+  getAllResearchBook(){
+    this.researchService.getAllBook().subscribe((res)=>{
+      console.log(res);
+      this.queries=res;
+     })
   }
  // Event handlers
  openFormCard() {
@@ -67,6 +45,16 @@ closeFormCard() {
 continueQuery() {
   // Add logic to handle the query continuation
   console.log('Continuing query:', this.newQuery);
+  const body = {
+    name: this.newQuery,
+    dateCreated: new Date(),
+    lastModified: new Date(),
+    userId: this.user.id
+  }
+  console.log(body);
+ this.researchService.addBook(body).subscribe((res)=>{console.log(res);
+ this.router.navigate(['/home'])
+})
   this.closeFormCard();
 }
   logout(){

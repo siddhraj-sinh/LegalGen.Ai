@@ -1,32 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ResearchBookService } from 'src/app/services/research-book.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  research: any[] = [
-    {
-      title: "Research 1",
-      creationDate: "2023-07-10"
-    },
-    {
-      title: "Research 2",
-      creationDate: "2023-07-09"
-    },
-    {
-      title: "Research 3",
-      creationDate: "2023-07-08"
-    },
-    
-    {
-      title: "Research 4",
-      creationDate: "2023-07-08"
-    },
-
-  ];
+export class HomeComponent implements OnInit {
+  research!: any[];
  
+  constructor(private researchService:ResearchBookService){}
+  ngOnInit(): void {
+   this.researchService.getAllBook().subscribe((res)=>{
+    this.research=res;
+   })
+  }
   filteredResearches: string[] = []; // Placeholder for filtered researches
   searchQuery: string = ''; // Placeholder for the search query
   openAddResearchModal() {
