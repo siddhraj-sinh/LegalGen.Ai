@@ -8,6 +8,7 @@ import { ResearchBookService } from 'src/app/services/research-book.service';
 })
 export class HomeComponent implements OnInit {
   research!: any[];
+  showFilterPage: boolean=false;
  
   constructor(private researchService:ResearchBookService){}
   ngOnInit(): void {
@@ -31,5 +32,8 @@ performSearch(): void {
   );
   
   console.log('Filtered Researches:', this.filteredResearches);
+}
+toggleFilterPage() {
+  this.showFilterPage = !this.showFilterPage;
 }
 }
