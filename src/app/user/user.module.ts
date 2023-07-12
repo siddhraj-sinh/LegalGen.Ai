@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
    { path: 'signin', component: SigninComponent },
    {path:'forgot-password',component:ForgotPasswordComponent},
    {path:'reset-password/:token',component:UpdatePasswordComponent},
-   {path:'update-profile',component:UpdateProfileComponent}
+   {path:'update-profile',component:UpdateProfileComponent},
+   {path:'change-password',component:ChangePasswordComponent}
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const routes: Routes = [
     SignupComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
