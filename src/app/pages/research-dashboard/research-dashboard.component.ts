@@ -68,4 +68,7 @@ continueQuery() {
   navigateToUpdateProfile(){
     this.router.navigate(['user/update-profile'])
   }
+  navigateToChangePassword(){
+    this.router.navigate(['user/change-password'])
+  }
 }
