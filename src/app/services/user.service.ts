@@ -142,4 +142,18 @@ export class UserService {
     console.log(body);
     return this.http.post(url, body, { headers: headers });
   }
+  resetPassword(CurrentPassword: string,NewPassword: string){
+    const url = `${this.url}/reset-password`;
+    const body = {
+      token: this.getToken(),
+      currentPassword: CurrentPassword,
+      newPassword:NewPassword
+    };
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    console.log(body);
+    return this.http.post(url, body, { headers: headers });
+  }
 }
