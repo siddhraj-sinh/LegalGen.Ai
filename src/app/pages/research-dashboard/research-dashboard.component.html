@@ -27,8 +27,9 @@
       <div class="card-icon">
         <i class="fa-solid fa-folder fa-lg" style="color: #fccc77; margin-top: 30px;"></i>
       </div>
-      <h4>{{ query.title }}</h4>
-      <p class="text-small">{{ query.creationDate }}</p>
+      <h4>{{ query.name }}</h4>
+      <div class="text-small"><small>{{ query.dateCreated | date }}</small>    <img src="../../../assets//arrow-up-right.svg"/></div>
+   
     </div>
   </div>
   
