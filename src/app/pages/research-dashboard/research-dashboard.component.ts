@@ -52,7 +52,9 @@ continueQuery() {
     userId: this.user.id
   }
   console.log(body);
- this.researchService.addBook(body).subscribe((res)=>{console.log(res);})
+ this.researchService.addBook(body).subscribe((res)=>{console.log(res);
+ this.router.navigate(['/home'])
+})
   this.closeFormCard();
 }
   logout(){
