@@ -1,17 +1,18 @@
 <div class="sidebar">
-  <button class="add-project" (click)="openAddResearchModal()">+ New Research</button>
-  <ul class="project-list">
-    <li *ngFor="let researches of research">
-      <div class="research-item">
-        <i class="fa-solid fa-folder fa-sm" style="color: #fccc77;"></i>
-        <div class="research-content">
-          <div class="research-title">{{ researches.name }}</div>
-          <div class="creation-date">{{ researches.dateCreated | date }}</div>
+    <button class="btn btn-primary add-project" (click)="openAddResearchModal()">+ New Research</button>
+    <ul class="list-group project-list">
+      <li *ngFor="let researches of research" class="list-group-item">
+        <div class="d-flex align-items-start">
+          <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
+          <div class="research-content ms-3">
+            <div class="research-title">{{ researches.name }}</div>
+            <div class="creation-date">{{ researches.dateCreated | date }}</div>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
-</div>
+      </li>
+    </ul>
+  </div>
+  
 
 <!-- <div class="bg">
   <img src="../../../assets/app_logo_2.png" />
