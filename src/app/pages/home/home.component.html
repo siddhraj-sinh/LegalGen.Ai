@@ -13,7 +13,7 @@
   </ul>
 </div>
 
-<div class="bg">
+<!-- <div class="bg">
   <img src="../../../assets/app_logo_2.png" />
   <div class="search-container">
     <input type="text" class="search-input" placeholder="Tell us about your query" name="email" id="email"
@@ -21,7 +21,172 @@
     <i class="fa fa-search search-icon" (click)="performSearch()"></i>
     <div class="advanced-filter-container">
       <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
-      <!--<span class="advanced-filter-label">Advanced Filters</span>-->
+      <span class="advanced-filter-label">Advanced Filters</span>
     </div>
+  </div>
+</div> -->
+
+<section class="wrap">
+  <div class="container">
+      <div class="row  justify-content-center">
+          <div class="col-sm-12 col-md-8 col-lg-8">
+              <div class="form-box form-box-width">
+                  <div class="login-img">
+                      <img src="assets/images/logo.png" />
+                  </div>
+                  <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
+                      <div class="form-group searchgroup" formArrayName="queries"
+                          *ngFor="let query of queries.controls; let i=index; let last = last">
+                          <button type=" submit" class="btn-left btn btn-light">
+                              <img src="assets/images/search.png" /></button>
+                          <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
+                              [formControlName]="i">
+                              <!-- (ngModelChange)="getDefaultMetadataList()" -->
+                          <button type="submit" *ngIf="queries.controls.length > 1" (click)="removeQueries(i)"
+                              [ngClass]="queries.controls.length > 1?'btn-plus':'btn-closs'"
+                              class="btn btn-light"><img src="assets/images/close.png" /></button>
+                          <button type="submit" *ngIf="last" (click)="addQueries()"
+                              class="btn-plus btn btn-light"><img src="assets/images/plus.png" /></button>
+                          <div
+                              *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
+                              <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
+                                  Query is required!
+                              </span>
+                          </div>
+                      </div>
+                      <div class="Advancedfilters">
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div>
+                                  <h4 data-bs-toggle="collapse" (click)="enableFilter()"
+                                      data-bs-target="#collapseAdvancedfilters">Advanced
+                                      filters <span class="fa fa-angle-down"></span></h4>
+                              </div>
+                              <div class="btns" *ngIf="!advancedFilter">
+                                  <button type="reset" class="btn btn-link btn-submit"
+                                      (click)="resetForm()">Reset</button>
+                                  <button type="submit" [disabled]="!queryForm.valid"
+                                      class="btn btn-secondary btn-submit">Submit</button>
+                              </div>
+                          </div>
+                          <div class="collapse" id="collapseAdvancedfilters">
+                              <hr />
+                              <div class="row" formGroupName="advancedFilters">
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="courts" bindLabel="name" bindValue="name" type="text"
+                                              formControlName="court" placeholder="Court">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="benchMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="bench" placeholder="Bench"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'bench')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <!-- <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <select class="form-ctrl form-control">
+                                              <option>Case Type</option>
+                                          </select>
+                                      </div>
+                                  </div> -->
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="caseNumbersMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="case_number" placeholder="Case Number"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'case_numbers')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="citationsMetaData" bindLabel="name" bindValue="name"
+                                              placeholder="Citation" type="text" formControlName="citation"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'citations')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="actsMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="act" placeholder="Act"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'acts')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="sectionsMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="section" placeholder="Section"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'sections')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="petitionerMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="petitioner" placeholder="Petitioner"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'petitioner')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6">
+                                      <div class="form-group">
+                                          <ng-select [items]="respondentMetaData" bindLabel="name" bindValue="name"
+                                              type="text" formControlName="respondent" placeholder="Respondent"
+                                              (search)="getMetaDataListBaseOnInput($event.term, 'respondent')">
+                                          </ng-select>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-6 col-md-6" formGroupName="judgement_year">
+                                      <div class="form-group">
+                                          <div class="d-flex judgementyear">
+                                              <input type="text" disabled class="form-ctrl form-control"
+                                                  placeholder="Judgement year " />
+                                              <select class="form-ctrl form-control" formControlName="judgementFrom">
+                                                  <option [ngValue]="null" disabled>From</option>
+                                                  <ng-container *ngFor="let year of yearsList">
+                                                      <option value="{{year}}">{{year}}</option>
+                                                  </ng-container>
+                                              </select>
+                                              <select class="form-ctrl form-control" formControlName="judgementTo">
+                                                  <option [ngValue]="null" disabled>To</option>
+                                                  <ng-container *ngFor="let year of yearsList">
+                                                      <option value="{{year}}">{{year}}</option>
+                                                  </ng-container>
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="row" *ngIf="advancedFilter">
+                                  <div class="col-12 col-sm-12 text-end">
+                                      <button type="reset" class="btn btn-link btn-submit"
+                                          (click)="resetForm()">Reset</button>
+                                      <button type="submit" [disabled]="!queryForm.valid"
+                                          class="btn btn-secondary btn-submit">Submit</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <ng-container *ngIf="isResultsVisible">
+          <!-- <app-search-result></app-search-result> -->
+      </ng-container>
+  </div>
+</section>
+
+<!-- Loader -->
+<div class="loader-screen" *ngIf="loader">
+  <div class="loading-dots">
+      <div class="loading-dots--dot"></div>
+      <div class="loading-dots--dot"></div>
+      <div class="loading-dots--dot"></div>
   </div>
 </div>
