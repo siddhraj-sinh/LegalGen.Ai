@@ -23,7 +23,9 @@ export class ChangePasswordComponent implements OnInit{
   onSubmit():void{
    console.log(this.updatePasswordForm.value)
    const { newPassword,currentPassword } = this.updatePasswordForm.value;
-    this.userService.resetPassword(currentPassword,newPassword).subscribe((res)=>{console.log(res)})
+    this.userService.resetPassword(currentPassword,newPassword).subscribe((res)=>{
+      this.router.navigate(['/dashboard'])
+    })
   }
   getControl(name:any):AbstractControl | null{
     return this.updatePasswordForm.get(name);
