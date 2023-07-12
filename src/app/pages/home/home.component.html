@@ -1,33 +1,27 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="sidebar">
-    <button class="add-project"  (click)="openAddResearchModal()">+ New Research</button>
-    <ul class="project-list">
-      <li *ngFor="let researches of research">
-        <div class="research-item">
-          <i class="fa-solid fa-folder fa-sm" style="color: #fccc77;"></i>
-          <div class="research-content">
-            <div class="research-title">{{ researches.name }}</div>
-            <div class="creation-date">{{ researches.dateCreated | date }}</div>
-          </div>
+  <button class="add-project" (click)="openAddResearchModal()">+ New Research</button>
+  <ul class="project-list">
+    <li *ngFor="let researches of research">
+      <div class="research-item">
+        <i class="fa-solid fa-folder fa-sm" style="color: #fccc77;"></i>
+        <div class="research-content">
+          <div class="research-title">{{ researches.name }}</div>
+          <div class="creation-date">{{ researches.dateCreated | date }}</div>
         </div>
-      </li>
-    </ul>
-    
-  </div>
-  <div class="bg">
-    <img src="../../../assets/app_logo_2.png"><br>
-    <div>
-      <div class="search-container">
-        <input type="text" class="search-input" placeholder="Tell us about your query" name="email" id="email" [(ngModel)]="searchQuery" (ngModelChange)="performSearch()">
-        <i class="fa fa-search search-icon" (click)="performSearch()"></i>
       </div>
-        <br> <select class ="options">
-            <option value="option1">Advanced Filter</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
-          <span class="arrow"></span>
-        </div>
-          
-    </div><br>
-​
+    </li>
+  </ul>
+</div>
+
+<div class="bg">
+  <img src="../../../assets/app_logo_2.png" />
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Tell us about your query" name="email" id="email"
+      [(ngModel)]="searchQuery" (ngModelChange)="performSearch()">
+    <i class="fa fa-search search-icon" (click)="performSearch()"></i>
+    <div class="advanced-filter-container">
+      <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+      <!--<span class="advanced-filter-label">Advanced Filters</span>-->
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ResearchDashboardComponent } from './pages/research-dashboard/research-dashboard.component';
+import { AdvanceFiltersComponent } from './pages/advance-filters/advance-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,7 +17,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HomeComponent,
     LandingPageComponent,
-    ResearchDashboardComponent
+    ResearchDashboardComponent,
+    AdvanceFiltersComponent
   ],
   imports: [
     BrowserModule,
