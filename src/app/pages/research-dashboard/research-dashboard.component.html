@@ -1,44 +1,83 @@
-<header>
-    <div class="logo" style="padding-left: 90px;">
-      <img src="../../../assets/app_logo_2.png" alt="Logo" style="cursor: pointer;">
+<!-- <header>
+  <div class="logo" style="padding-left: 90px;">
+    <img src="../../../assets/app_logo_2.png" alt="Logo" style="cursor: pointer;">
+  </div>
+  <div class="profile" style="padding-right: 90px;">
+    <div class="user-image">
+      <span>{{ userName.charAt(0) }}</span>
     </div>
-    <div class="profile" style="padding-right: 90px;">
-      <div class="user-image">
-        <span>{{ userName.charAt(0) }}</span>
-      </div>
-      <div class="dropdown">
-        <span class="user-name">{{ userName }}</span>
-        <span class="dropdown-icon">▼</span>
-        <div class="dropdown-content">
-          <button (click)="navigateToUpdateProfile()">Update Profile</button>
-          <button (click)="logout()">Sign Out</button>
-        </div>
+    <div class="dropdown">
+      <span class="user-name">{{ userName }}</span>
+      <span class="dropdown-icon">▼</span>
+      <div class="dropdown-content">
+        <button (click)="navigateToUpdateProfile()">Update Profile</button>
+        <button (click)="logout()">Sign Out</button>
       </div>
     </div>
-  </header>
-  <div class="card-container">
-    <div class="card" (click)="openFormCard()" style="align-items: center;">
+  </div>
+</header> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <a href="#" class="navbar-brand">
+          <img src="../../../assets/app_logo_2.png" alt="Logo" style="cursor: pointer;">
+      </a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
 
-      <i class="fas fa-plus fa-2xl"></i>
-      
-      <p>New Query</p>
-    </div>
-    <div class="card" *ngFor="let query of queries">
-      <div class="card-icon">
-        <i class="fa-solid fa-folder fa-lg" style="color: #fccc77; margin-top: 30px;"></i>
+          <div class="navbar-nav ms-auto">
+            <div class="profile">
+              <div class="user-image">
+                <span>{{ userName.charAt(0) }}</span>
+              </div>
+              <div class="dropdown">
+                <span class="user-name">{{ userName }}</span>
+                <span class="dropdown-icon">▼</span>
+                <div class="dropdown-content">
+                  <button (click)="navigateToUpdateProfile()">Update Profile</button>
+                  <button (click)="logout()">Sign Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-      <h4>{{ query.name }}</h4>
-      <div class="text-small"><small>{{ query.dateCreated | date }}</small>    <img src="../../../assets//arrow-up-right.svg"/></div>
-   
+  </div>
+</nav>
+<div class="card-container">
+  <div class="card" (click)="openFormCard()" style="align-items: center;">
+  
+    <i class="fas fa-plus fa-2x mb-3"></i>
+    <p>New Query</p>
+    
+  </div>
+  <div class="card" *ngFor="let query of queries">
+    <div class="card-body d-flex flex-column align-items-start">
+      <div class="card-icon mb-3">
+        <i class="fas fa-folder fa-lg" style="color: #fccc77;"></i>
+      </div>
+      <h4 class="card-title">{{ query.name }}</h4>
+      <div class="card-text mt-auto">
+        <small>{{ query.dateCreated | date }}</small>
+      </div>
     </div>
   </div>
-  
-  <div class="modal" *ngIf="isFormCardOpen">
+</div>
+
+
+
+<div class="modal" *ngIf="isFormCardOpen">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" [@modalAnimation]>
-      <h2 style="margin: 20px 40px 15px 40px;">Resarch Name</h2>
-      <input [(ngModel)]="newQuery"  placeholder="Enter your query" style="margin: 10px 40px 30px 40px; padding: 9px;height: 38px; width: 80%;"/>
-      <button (click)="continueQuery()" class="button">Continue</button>
-      <button (click)="closeFormCard()" class="button">Close</button>
+      <div class="modal-header">
+        <h2 class="modal-title">Research Name</h2>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="newQuery" placeholder="Enter your query" class="form-control form-control-lg bg-light border-bottom" style="height: 5rem;">
+
+        <button (click)="continueQuery()" class="button">Continue</button>
+        <button (click)="closeFormCard()" class="button">Close</button>
+      </div>
     </div>
   </div>
-  
+</div>
