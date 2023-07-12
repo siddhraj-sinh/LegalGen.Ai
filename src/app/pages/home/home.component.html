@@ -21,12 +21,19 @@
         <input type="text" class="search-input" placeholder="Tell us about your query" name="email" id="email" [(ngModel)]="searchQuery" (ngModelChange)="performSearch()">
         <i class="fa fa-search search-icon" (click)="performSearch()"></i>
       </div>
-        <br> <select class ="options">
-            <option value="option1">Advanced Filter</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
-          <span class="arrow"></span>
+        <br><div class="advanced-filter-container">
+          <a class="advanced-filter-link" routerLink="/filter">
+            <span class="advanced-filter-options"> <select class="options">
+              <option value="option1">Advanced Filters</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </span></a>
+          <!--<span class="advanced-filter-label">Advanced Filters</span>-->
+          
+           
+        </div>
+        
         </div>
           
     </div><br>

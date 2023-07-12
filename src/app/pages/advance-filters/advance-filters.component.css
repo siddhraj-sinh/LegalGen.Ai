@@ -1,9 +1,12 @@
 .form-container {
     display: grid;
+    background-color: transparent;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; /* Adjust the gap between the columns as desired */
     width: 800px; /* Adjust the width of the form container as desired */
     margin: 0 auto;
+    
+   
   }
   
   .column {

@@ -155,7 +155,17 @@
     background-color: transparent;
     font-size: 14px;
     text-align: center;
+    padding-left: 0px;
+    color: #999;
+  }
+  
+  .advanced-filter-link{
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    text-align: center;
     padding-left: 162px;
     color: #999;
+
   }
   
