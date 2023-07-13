@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   showFilterPage: boolean=false;
  
   isFormCardOpen: boolean = false;
+  isSearchVisible:boolean = true;
   newQuery: string = '';
   user!:any;
   filteredResearches: string[] = []; // Placeholder for filtered researches
@@ -144,6 +145,7 @@ getResultsBasedOnSearch(): void {
       this.service.sendResponse(response); //send response to results component
       this.loader = false; // disables the loader
       this.isResultsVisible = true;
+      this.isSearchVisible=false;
     },
     (error) => {
       console.log(error); // temporary log error

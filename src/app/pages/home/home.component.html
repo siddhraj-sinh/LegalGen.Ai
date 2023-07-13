@@ -34,7 +34,7 @@
   </div>
 </div> -->
 
-<div class="bg">
+<div class="bg" *ngIf="isSearchVisible">
 
     <img style="margin-bottom: 20px;" src="../../../assets/app_logo_2.svg" />
     <div class="search-container">
@@ -63,11 +63,13 @@
             </div>
         </form>
     </div>
-    <ng-container *ngIf="isResultsVisible">
-        <!-- <app-search-result></app-search-result> -->
-    </ng-container>
+   
 </div>
-
+<div class="result">
+  <ng-container *ngIf="isResultsVisible">
+    <app-search-result></app-search-result>
+  </ng-container>
+</div>
 <!-- Loader -->
 <div class="loader-screen" *ngIf="loader">
     <div class="loading-dots">

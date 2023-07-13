@@ -12,6 +12,7 @@ import { AdvanceFiltersComponent } from './pages/advance-filters/advance-filters
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HomeComponent,
     LandingPageComponent,
     ResearchDashboardComponent,
-    AdvanceFiltersComponent
+    AdvanceFiltersComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,74 @@
+<ng-container *ngIf="data.resp.length !== 0">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-9">
+            <ng-container *ngFor="let item of data.resp | keyvalue:returnZero; let i = index;">
+                <ng-container *ngIf="item.value">
+                    <div class="law-card" *ngFor="let item2 of item.value | keyvalue:returnZero">
+                        <ng-container *ngIf="item2.key !=='stats' && item2.key !=='common judgement among all facts'">
+                            <div class="law-card-header" (click)="openFormCard()">
+                                <h4>{{item2.key}}</h4>
+                            </div>
+                            
+                            <div class="modal" *ngIf="isFormCardOpen">
+                                <div style="display: flex;">
+                                  <div class="modal-content" [@modalAnimation]>
+                                    <!-- <div class="modal-header">
+                                      <h2 class="modal-title">Relevancy</h2>
+                                    </div> -->
+                                    <div class="modal-body">
+                                        <ul class="list-point list-unstyled mb-0" *ngIf="item2.value['facts']">
+                                            <li *ngFor="let facts of item2.value['facts'] | keyvalue:returnZero">
+                                                {{facts.value}}</li>
+                                        </ul>
+                                        <p class="mb-0 mt-2" *ngIf="item2.value['facts'] == ''">Not Available</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <ng-container *ngFor="let stat of stats | keyvalue:returnZero">
+                <ng-container *ngIf="stat.value">
+                    <div class="law-rgtbar" *ngFor="let list of stat.value | keyvalue:returnZero">
+                        <h4>ENTERED FACT</h4>
+                        <ul class="list-point list-unstyled mb-0">
+                            <li>{{list.key}}</li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div class="law-rgtbar">
+                <h4>Relevant Judgement</h4>
+                <ul class="list-group policy-cate list-group-numbered">
+                    <ng-container *ngFor="let judgment of common_judgements | keyvalue:returnZero">
+                        <ng-container *ngIf="judgment.value">
+                            <li *ngFor="let facts of judgment.value | keyvalue:returnZero" class="list-group-item">
+                                {{facts.value}}</li>
+                        </ng-container>
+                    </ng-container>
+                </ul>
+                <p class="output-tag" *ngIf="!common_judgements || common_judgements.length === 0">Not Available</p>
+            </div>
+            <div class="law-rgtbar">
+                <h4>Statistics</h4>
+                <ul class="list-point list-unstyled mb-0">
+                    <li>Win 60%</li>
+                    <li>Loss 20%</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<div class="card" *ngIf="data.resp.length === 0">
+    <div class="card-body">
+        <div class="no-results">
+            <h2 class="text-center mb-4"><i class="fa fa-frown-o" aria-hidden="true"></i> No Results Found</h2>
+        </div>
+    </div>
+</div>
+

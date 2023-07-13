@@ -338,3 +338,7 @@ padding: 40px;
   text-transform: uppercase;
   transition: background-color 0.3s ease; 
 }
+.result {
+  margin-left: 250px; /* Adjust the margin to align with the sidebar */
+  padding: 30px;
+}
