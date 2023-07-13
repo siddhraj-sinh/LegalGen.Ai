@@ -53,10 +53,10 @@
     }
   }
   
-  .modal-content {
+  /* .modal-content {
     animation-name: modalFadeIn;
   }
   
   .modal-content.ng-leave {
     animation-name: modalFadeOut;
-  }
+  } */

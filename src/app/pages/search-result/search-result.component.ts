@@ -64,6 +64,10 @@ export class SearchResultComponent {
     console.log(this.relevancies);
     this.isFormCardOpen = true;
   }
+
+  close() {
+    this.isFormCardOpen = false;
+  }
   
   closeFormCard() {
     this.isFormCardOpen = false;

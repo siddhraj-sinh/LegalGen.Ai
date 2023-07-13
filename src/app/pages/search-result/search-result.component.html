@@ -11,8 +11,9 @@
                            
                             <div class="modal" *ngIf="isFormCardOpen">
                                 <div style="display: flex;">
-                                  <div class="modal-content" [@modalAnimation]>
+                                  <div class="modal-content">
                                     <div class="modal-header">
+                                        <button (click)="close()">Close</button>
                                       <h2 class="modal-title">Relevancy</h2>
                                     </div>
                                     <div class="modal-content">
