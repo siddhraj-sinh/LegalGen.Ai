@@ -63,7 +63,10 @@ header {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 10px;
     z-index: 1;
+    right: 0; /* Align the dropdown to the right */
+    left: auto; /* Reset the left property */
   }
+  
   
   .dropdown-content button {
     background: none;
@@ -82,16 +85,15 @@ header {
   .card-container {
     display: flex;
     flex-wrap: wrap;
-    
   }
   
   .card {
     display: flex;
     flex-direction: column;
-    align-items: start; /* Update this line */
+    align-items: start;
     justify-content: center;
-    width: 180px; /* Adjust the width as needed */
-    height: 180px; /* Adjust the height as needed */
+    width: 180px;
+    height: 160px;
     border: 1px solid #ccc;
     background-color: #EEEEEE;
     border-radius: 10px;
@@ -100,10 +102,15 @@ header {
     text-align: center;
     cursor: pointer;
   }
+  
   .card-icon {
-    float: left;
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-bottom: 10px;
   }
+  
+  .card-text {
+    margin-top: auto;
+  }
+  
   
   
   .modal {
@@ -125,10 +132,18 @@ header {
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    padding: 40px;
+  padding: 40px;
     border-radius: 10px;
     animation-duration: 0.3s;
     animation-fill-mode: both;
+    text-align: center;
+  }
+  .modal-content input {
+    width: 100%; /* Set the width to 100% to occupy the full width */
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin-bottom: 10px;
+    padding: 9px;
+    height: 38px;
   }
   
   @keyframes modalFadeIn {
@@ -162,8 +177,8 @@ header {
   }
 
   .button {
-    width: 60%;
-    margin-bottom: 15px;
+     width: 80%;
+    margin-bottom: 15px; 
     padding: 10px;
     background-color: #26A700;
     color: #ffffff;
@@ -172,6 +187,6 @@ header {
     cursor: pointer;
     font-size: 13px;
     text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; 
   }
  

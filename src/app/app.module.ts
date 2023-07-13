@@ -11,6 +11,8 @@ import { ResearchDashboardComponent } from './pages/research-dashboard/research-
 import { AdvanceFiltersComponent } from './pages/advance-filters/advance-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     LandingPageComponent,
     ResearchDashboardComponent,
-    AdvanceFiltersComponent
+    AdvanceFiltersComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,NoopAnimationsModule
+    BrowserAnimationsModule,NoopAnimationsModule,NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
