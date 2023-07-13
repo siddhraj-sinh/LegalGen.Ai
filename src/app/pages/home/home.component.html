@@ -49,8 +49,111 @@
                 </div>
                 <div class="advanced-filter-container">
                     <div class="d-flex align-items-center">
-                      <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+                      <a class="advanced-filter-link" (click)="openAdvancedFilters()">Advance Filter</a>
                       <span class="dropdown-icon">▼</span>
+                      <div class="modal-content">
+                        <!-- <app-advance-filters></app-advance-filters> -->
+                        <!-- <button (click)="closeAdvancedFilters()" class="close-button">Close</button> -->
+                      </div>
+                      <div class="modal" *ngIf="showAdvancedFilters">
+                        <!--adding here-->
+                        <!--Ends here-->
+                        <div class="modal-content">
+                          <div class="row" formGroupName="advancedFilters">
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="courts" bindLabel="name" bindValue="name" type="text"
+                                        formControlName="court" placeholder="Court">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="benchMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="bench" placeholder="Bench"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'bench')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <!-- <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <select class="form-ctrl form-control">
+                                        <option>Case Type</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="caseNumbersMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="case_number" placeholder="Case Number"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'case_numbers')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="citationsMetaData" bindLabel="name" bindValue="name"
+                                        placeholder="Citation" type="text" formControlName="citation"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'citations')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="actsMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="act" placeholder="Act"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'acts')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="sectionsMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="section" placeholder="Section"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'sections')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="petitionerMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="petitioner" placeholder="Petitioner"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'petitioner')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <ng-select [items]="respondentMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="respondent" placeholder="Respondent"
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'respondent')">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6" formGroupName="judgement_year">
+                                <div class="form-group">
+                                    <div class="d-flex judgementyear">
+                                        <input type="text" disabled class="form-ctrl form-control"
+                                            placeholder="Judgement year " />
+                                        <select class="form-ctrl form-control" formControlName="judgementFrom">
+                                            <option [ngValue]="null" disabled>From</option>
+                                            <ng-container *ngFor="let year of yearsList">
+                                                <option value="{{year}}">{{year}}</option>
+                                            </ng-container>
+                                        </select>
+                                        <select class="form-ctrl form-control" formControlName="judgementTo">
+                                            <option [ngValue]="null" disabled>To</option>
+                                            <ng-container *ngFor="let year of yearsList">
+                                                <option value="{{year}}">{{year}}</option>
+                                            </ng-container>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <button (click)="closeAdvancedFilters()" class="close-button">Close</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
             </div>

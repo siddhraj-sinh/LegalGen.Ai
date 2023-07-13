@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   user!:any;
   filteredResearches: string[] = []; // Placeholder for filtered researches
   searchQuery: string = ''; // Placeholder for the search query
+  showAdvancedFilters: boolean=false;
+  isFilterPageOpen: boolean=false;
   openAddResearchModal() {
     // Here, you can open a modal or perform any other action to add a new project.
     // For simplicity, we will just log a message to the console.
@@ -125,6 +127,13 @@ get queries() {
 
 addQueries() {
   this.queries.push(this._FB.control(''));
+}
+openAdvancedFilters() {
+  this.showAdvancedFilters = true;
+}
+
+closeAdvancedFilters() {
+  this.showAdvancedFilters = false;
 }
 
 removeQueries(index: number) {
@@ -419,4 +428,8 @@ resetAllMetadataList(): void {
   this.respondentMetaData = [];
   this.petitionerMetaData = [];
 }
+closeFilterPage() {
+  this.isFilterPageOpen = false;
+}
+
 }
