@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   research!: any[];
   showFilterPage: boolean=false;
- 
+  userName!:string;
   isFormCardOpen: boolean = false;
   isSearchVisible:boolean = true;
   newQuery: string = '';
@@ -71,6 +71,7 @@ ngOnInit(): void {
    this.userService.getUserByToken().subscribe((res)=>{
    // this.userName=res.firstName;
     this.user=res;
+    this.userName=res.firstName;
    })
   this.queryForm = this._FB.group({
     queries: this._FB.array([this._FB.control('', Validators.required)]),

@@ -1,23 +1,23 @@
 <div class="sidebar">
-    <button class="btn btn-primary add-project" (click)="openFormCard()">+ New Research</button>
-    <ul class="list-group project-list">
-        <li *ngFor="let researches of research" class="list-group-item">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
-                <div class="research-content ms-3">
-                    <div class="research-title">{{ researches.name }}</div>
-                    <div class="creation-date">{{ researches.dateCreated | date }}</div>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <div class="bottom-section">
-      <div class="user-image">
-        <span>S</span>
+  <button class="btn btn-primary add-project" (click)="openFormCard()">+ New Research</button>
+  <ul class="list-group project-list">
+    <li *ngFor="let researches of research" class="list-group-item">
+      <div class="d-flex align-items-start">
+        <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
+        <div class="research-content ms-3">
+          <div class="research-title">{{ researches.name }}</div>
+          <div class="creation-date">{{ researches.dateCreated | date }}</div>
+        </div>
       </div>
-      <span class="user-name">siddhraj</span>
-      <i class="fas fa-sign-out-alt signout-icon" (click)="signOut()"></i>
+    </li>
+  </ul>
+  <div class="bottom-section">
+    <div class="user-image">
+      <span>{{ userName.charAt(0) }}</span>
     </div>
+    <span class="user-name">{{userName}}</span>
+    <i class="fas fa-sign-out-alt signout-icon" (click)="signOut()"></i>
+  </div>
 </div>
 
 
@@ -36,34 +36,34 @@
 
 <div class="bg" *ngIf="isSearchVisible">
 
-    <img style="margin-bottom: 20px;" src="../../../assets/app_logo_2.svg" />
-    <div class="search-container">
-        <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
-            <div class="form-group searchgroup" formArrayName="queries"
-                *ngFor="let query of queries.controls; let i=index; let last = last">
-                <div class="input-group">
-               
-                <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
-                    [formControlName]="i">
-                    <button type=" submit" class="btn-left btn btn-light">
-                        <img src="../../../assets/search.png" /></button>
-                    </div>
-                <!-- (ngModelChange)="getDefaultMetadataList()" -->
-                <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
-                    <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
-                        Query is required!
-                    </span>
-                </div>
-                <div class="advanced-filter-container">
-                    <div class="d-flex align-items-center">
-                      <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
-                      <span class="dropdown-icon">▼</span>
-                    </div>
-                  </div>
-            </div>
-        </form>
-    </div>
-   
+  <img style="margin-bottom: 20px;" src="../../../assets/app_logo_2.svg" />
+  <div class="search-container">
+    <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
+      <div class="form-group searchgroup" formArrayName="queries"
+        *ngFor="let query of queries.controls; let i=index; let last = last">
+        <div class="input-group">
+
+          <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
+            [formControlName]="i">
+          <button type=" submit" class="btn-left btn btn-light">
+            <img src="../../../assets/search.png" /></button>
+        </div>
+        <!-- (ngModelChange)="getDefaultMetadataList()" -->
+        <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
+          <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
+            Query is required!
+          </span>
+        </div>
+        <div class="advanced-filter-container">
+          <div class="d-flex align-items-center">
+            <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+            <span class="dropdown-icon">▼</span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </div>
 <div class="result">
   <ng-container *ngIf="isResultsVisible">
@@ -72,25 +72,26 @@
 </div>
 <!-- Loader -->
 <div class="loader-screen" *ngIf="loader">
-    <div class="loading-dots">
-        <div class="loading-dots--dot"></div>
-        <div class="loading-dots--dot"></div>
-        <div class="loading-dots--dot"></div>
-    </div>
+  <div class="loading-dots">
+    <div class="loading-dots--dot"></div>
+    <div class="loading-dots--dot"></div>
+    <div class="loading-dots--dot"></div>
+  </div>
 </div>
 
 <div class="modal" *ngIf="isFormCardOpen">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" [@modalAnimation]>
-        <div class="modal-header">
-          <h2 class="modal-title">Research Name</h2>
-        </div>
-        <div class="modal-body">
-          <input [(ngModel)]="newQuery" placeholder="Enter your query" class="form-control form-control-lg bg-light border-bottom" style="height: 5rem;">
-  
-          <button (click)="continueQuery()" class="button">Continue</button>
-          <button (click)="closeFormCard()" class="button">Close</button>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" [@modalAnimation]>
+      <div class="modal-header">
+        <h2 class="modal-title">Research Name</h2>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="newQuery" placeholder="Enter your query"
+          class="form-control form-control-lg bg-light border-bottom" style="height: 5rem;">
+
+        <button (click)="continueQuery()" class="button">Continue</button>
+        <button (click)="closeFormCard()" class="button">Close</button>
       </div>
     </div>
   </div>
+</div>
