@@ -65,7 +65,8 @@ export class UpdateProfileComponent implements OnInit {
       firstName: this.updateProfileForm.value.firstName,
       lastName: this.updateProfileForm.value.lastName,
       organization: this.updateProfileForm.value.organization,
-      contactDetails:this.updateProfileForm.value.contactDetails
+      contactDetails:this.updateProfileForm.value.contactDetails,
+      accessToken:this.userService.getToken() 
     };
     console.log(updatedUser);
     this.userService.updateUserDetails(this.user.id,updatedUser).subscribe(() => {
