@@ -18,7 +18,7 @@ export class SearchResultComponent {
   common_judgements: any = [];
   objectKeys = Object.keys;
   isFormCardOpen: boolean = false;
-
+  relevancies:string[]=[];
   constructor(private service: AppService) {
     this.data = [];
     this.service.currentResults.subscribe(results => {
@@ -57,7 +57,11 @@ export class SearchResultComponent {
 
     }
   }
-  openFormCard() {
+  openFormCard(key:string,relevancy:string[]) {
+    console.log(key);
+    console.log(relevancy);
+    this.relevancies=relevancy;
+    console.log(this.relevancies);
     this.isFormCardOpen = true;
   }
   

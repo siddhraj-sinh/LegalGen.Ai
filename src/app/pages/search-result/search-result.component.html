@@ -5,23 +5,28 @@
                 <ng-container *ngIf="item.value">
                     <div class="law-card" *ngFor="let item2 of item.value | keyvalue:returnZero">
                         <ng-container *ngIf="item2.key !=='stats' && item2.key !=='common judgement among all facts'">
-                            <div class="law-card-header" (click)="openFormCard()">
+                            <div class="law-card-header" (click)="openFormCard(item2.key,item2.value['facts'])">
                                 <h4>{{item2.key}}</h4>
                             </div>
-                            
+                           
                             <div class="modal" *ngIf="isFormCardOpen">
                                 <div style="display: flex;">
                                   <div class="modal-content" [@modalAnimation]>
-                                    <!-- <div class="modal-header">
+                                    <div class="modal-header">
                                       <h2 class="modal-title">Relevancy</h2>
-                                    </div> -->
-                                    <div class="modal-body">
+                                    </div>
+                                    <div class="modal-content">
+                                        <ul class="list-point list-unstyled mb-0">
+                                        <li *ngFor="let item of relevancies">{{item}}</li>
+                                    </ul>
+                                    </div>
+                                    <!-- <div class="modal-body">
                                         <ul class="list-point list-unstyled mb-0" *ngIf="item2.value['facts']">
                                             <li *ngFor="let facts of item2.value['facts'] | keyvalue:returnZero">
                                                 {{facts.value}}</li>
                                         </ul>
                                         <p class="mb-0 mt-2" *ngIf="item2.value['facts'] == ''">Not Available</p>
-                                    </div>
+                                    </div> -->
                                   </div>
                                 </div>
                               </div>

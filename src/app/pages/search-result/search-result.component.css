@@ -29,13 +29,7 @@
     background-color: #fff;
     padding: 10px;
   }
-  .modal-content input {
-    width: 100%; /* Set the width to 100% to occupy the full width */
-    max-width: 400px; /* Adjust the maximum width as needed */
-    margin-bottom: 10px;
-    padding: 9px;
-    height: 38px;
-  }
+  
   
   @keyframes modalFadeIn {
     from {
