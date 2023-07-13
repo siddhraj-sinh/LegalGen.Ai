@@ -6,14 +6,60 @@
 
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
 height: 100%;
   width: 250px;
   background-color: #0A004D;
   padding: 20px;
   overflow-y: auto;
-  
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #0A004D;
+  position: sticky;
+}
+
+.user-image {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 5px; /* Add this line to move the profile image to the left */
+}
+
+.user-image span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-right: 5px;
+  color: white;
+}
+
+.signout-icon {
+  cursor: pointer;
+  color: white;
 }
 
 .project-list {
