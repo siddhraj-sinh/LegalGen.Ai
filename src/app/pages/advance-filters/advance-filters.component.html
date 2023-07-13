@@ -3,13 +3,18 @@
     <div class="form-group">
       <h3 class="enough">Advance Filters</h3>
       <div class="dropdown">
-        <button class="dropdown-button">Court</button>
-        <div class="dropdown-content">
-          <a href="#">Option 1</a>
-          <a href="#">Option 2</a>
-          <a href="#">Option 3</a>
+        <button class="dropdown-button" type="button" (click)="toggleDropdown()">{{ selectedCourt ? selectedCourt.name : 'Court' }}</button>
+        <div class="dropdown-content" [class.show]="isDropdownOpen">
+          <ng-select [items]="courts" bindLabel="name" bindValue="name" formControlName="court" (change)="updateSelectedCourt($event)">
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+              {{ item.name }}
+            </ng-template>
+          </ng-select>
         </div>
       </div>
+      
+      
+      
     </div><br><br>
 
     
@@ -64,11 +69,10 @@
     <div class="form-group">
       <div class="dropdown">
         <button class="dropdown-button">Bench</button>
-        <div class="dropdown-content">
-          <a href="#">Option 1</a>
-          <a href="#">Option 2</a>
-          <a href="#">Option 3</a>
-        </div>
+        <ng-select [items]="benchMetaData" bindLabel="name" bindValue="name"
+                                        type="text" formControlName="bench" 
+                                        (search)="getMetaDataListBaseOnInput($event.term, 'bench')">
+                                    </ng-select>
       </div>
     </div><br><br>
 
