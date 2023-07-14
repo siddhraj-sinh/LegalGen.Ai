@@ -6,7 +6,7 @@
                     <div class="law-card" *ngFor="let item2 of item.value | keyvalue:returnZero">
                         <ng-container *ngIf="item2.key !=='stats' && item2.key !=='common judgement among all facts'">
                             <div class="law-card-header" (click)="openFormCard(item2.key,item2.value['facts'])">
-                                <h4>{{item2.key}}</h4>
+                                <h4 style="cursor: pointer;">{{item2.key}}</h4>
                             </div>
                            
                             <div class="modal" *ngIf="isFormCardOpen">

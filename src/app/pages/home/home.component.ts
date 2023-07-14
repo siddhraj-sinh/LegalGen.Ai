@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   research!: any[];
   showFilterPage: boolean=false;
+  isAdvanceFilter:boolean=false;
   userName!:string;
   isFormCardOpen: boolean = false;
   isSearchVisible:boolean = true;
@@ -38,7 +39,7 @@ performSearch(): void {
   console.log('Filtered Researches:', this.filteredResearches);
 }
 toggleFilterPage() {
-  this.showFilterPage = !this.showFilterPage;
+  this.isAdvanceFilter = !this.isAdvanceFilter;
 }
 
 isResultsVisible: boolean = false;
@@ -119,6 +120,7 @@ continueQuery() {
   console.log(body);
  this.researchService.addBook(body).subscribe((res)=>{console.log(res);
 //  this.router.navigate(['/home'])
+window.location.reload();
 })
   this.closeFormCard();
 }

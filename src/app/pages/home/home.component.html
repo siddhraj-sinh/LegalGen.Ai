@@ -45,7 +45,7 @@
 
           <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
             [formControlName]="i">
-          <button type=" submit" class="btn-left btn btn-light">
+          <button type=" submit" *ngIf="!isAdvanceFilter" class="btn-left btn btn-light">
             <img src="../../../assets/search.png" /></button>
         </div>
         <!-- (ngModelChange)="getDefaultMetadataList()" -->
@@ -56,9 +56,117 @@
         </div>
         <div class="advanced-filter-container">
           <div class="d-flex align-items-center">
-            <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
-            <span class="dropdown-icon">▼</span>
+            <a class="advanced-filter-link">Advance Filter</a>
+            <img class="dropdown-icon" width="28px" height="28px" (click)="toggleFilterPage()" style="cursor: pointer;"
+              src="../../../assets//arrow_down.svg" />
+          </div> 
+        </div>
+      </div>
+      <div class="advance-filter-popup" *ngIf="isAdvanceFilter">
+        <div class="popup-content-ad">
+          <div class="row">
+            <div class="col-6">
+              <h3 class="enough">Advance Filters</h3>
+            </div>
+            <div class="col-6 text-end">
+              <button class="btn btn-secondary" (click)="toggleFilterPage()">Close</button>
+            </div>
           </div>
+          <!-- <div class="collapse" id="collapseAdvancedfilters"> -->
+          <hr />
+          <div class="row" formGroupName="advancedFilters" style="padding: 25px;">
+            <div class="col-12 col-sm-6 col-md-6" style="margin-bottom: 25px;">
+              <div class="form-group">
+                <select class="form-control" formControlName="court">
+                  <option [ngValue]="null" disabled selected>Court</option>
+
+                  <option *ngFor="let court of courts" [value]="court.name">{{ court.name }}</option>
+
+                  <!-- <option *ngFor="let court of courts" [value]="court.name">{{ court.name }}</option> -->
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <select class="form-control" formControlName="bench">
+                  <option [ngValue]="null" disabled selected>Bench</option>
+                  <option *ngFor="let item of benchMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6" style="margin-bottom: 25px;">
+              <div class="form-group">
+                <select class="form-control" formControlName="case_number">
+                  <option [ngValue]="null" disabled selected>Case Number</option>
+                  <option *ngFor="let item of caseNumbersMetaData" [value]="item.name">{{ item.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <select class="form-control" formControlName="citation">
+                  <option [ngValue]="null" disabled selected>Citation</option>
+                  <option *ngFor="let item of citationsMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6" style="margin-bottom: 25px;">
+              <div class="form-group">
+                <select class="form-control" formControlName="act">
+                  <option [ngValue]="null" disabled selected>Act</option>
+                  <option *ngFor="let item of actsMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <select class="form-control" formControlName="section">
+                  <option [ngValue]="null" disabled selected>Section</option>
+                  <option *ngFor="let item of sectionsMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6" style="margin-bottom: 25px;">
+              <div class="form-group">
+                <select class="form-control" formControlName="petitioner">
+                  <option [ngValue]="null" disabled selected>Petitioner</option>
+                  <option *ngFor="let item of petitionerMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <select class="form-control" formControlName="respondent">
+                  <option [ngValue]="null" disabled selected>Respondent</option>
+                  <option *ngFor="let item of respondentMetaData" [value]="item.name">{{ item.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6" formGroupName="judgement_year">
+              <div class="form-group">
+                <div class="d-flex judgementyear">
+                  <input type="text" disabled class="form-ctrl form-control" placeholder="Judgement year">
+                  <select class="form-ctrl form-control" formControlName="judgementFrom">
+                    <option [ngValue]="null" disabled selected>From</option>
+                    <option *ngFor="let year of yearsList" [value]="year">{{ year }}</option>
+                  </select>
+                  <select class="form-ctrl form-control" formControlName="judgementTo">
+                    <option [ngValue]="null" disabled selected>To</option>
+                    <option *ngFor="let year of yearsList" [value]="year">{{ year }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="d-flex">
+              <button type="reset" class="reset-button" (click)="resetForm()">Reset</button>
+              <button type="submit" [disabled]="!queryForm.valid" class="submit-button">Submit</button>
+            </div>
+
+          </div>
+          <!-- </div> -->
         </div>
       </div>
     </form>
@@ -67,6 +175,34 @@
 </div>
 <div class="result">
   <ng-container *ngIf="isResultsVisible">
+    <img src="../../../assets/app_logo_2.svg"/>
+   
+    <div class="search-container" style="margin-bottom: 10vh;">
+      <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
+        <div class="form-group searchgroup" formArrayName="queries"
+          *ngFor="let query of queries.controls; let i=index; let last = last">
+          <div class="input-group" style="width: 80%;">
+
+            <input type="text" class="form-ctrl form-control search-result-input" placeholder="Tell us about your query"
+              [formControlName]="i">
+            <button type=" submit" class="btn-left btn btn-light">
+              <img src="../../../assets/search.png" /></button>
+          </div>
+          <!-- (ngModelChange)="getDefaultMetadataList()" -->
+          <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
+            <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
+              Query is required!
+            </span>
+          </div>
+          <!-- <div class="advanced-filter-container">
+            <div class="d-flex align-items-center">
+              <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+              <span class="dropdown-icon">▼</span>
+            </div>
+          </div> -->
+        </div>
+      </form>
+    </div>
     <app-search-result></app-search-result>
   </ng-container>
 </div>
@@ -86,9 +222,10 @@
         <h2 class="modal-title">Research Name</h2>
       </div>
       <div class="modal-body">
-        <input [(ngModel)]="newQuery" placeholder="Enter your query"
-          class="form-control form-control-lg bg-light border-bottom" style="height: 5rem;">
 
+        <textarea [(ngModel)]="newQuery" placeholder="Enter your query"
+          class="form-control form-control-lg bg-light border-ccc no-resize small-text"
+          style="height: 6.5rem; width: 300px; border-radius: 3px; margin-bottom: 10px"></textarea>
         <button (click)="continueQuery()" class="button">Continue</button>
         <button (click)="closeFormCard()" class="button">Close</button>
       </div>
