@@ -4,6 +4,16 @@
   box-sizing: border-box;
 } */
 
+.border-ccc{
+  border-color:#ccc;
+ 
+}
+.no-resize {
+  resize: none;
+}
+.small-text {
+  font-size: 12px;
+}
 .sidebar {
   position: fixed;
   /* top: 0;
