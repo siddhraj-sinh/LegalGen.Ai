@@ -3,7 +3,20 @@
     <div class="card">
       <h2>Register</h2>
       <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
-  
+        <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
+        [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}">
+     
+        <span style="color: red;display: inline-block; text-align: left; width: 100%;"
+          *ngIf="signupForm.get('firstName')?.errors?.['required'] && (signupForm.get('firstName')?.dirty || signupForm.get('firstName')?.touched)">
+          First Name is required.
+        </span>
+        <input type="text" placeholder="Last Name" name="lastName" id="lastName" formControlName="lastName"
+        [ngClass]="{'error': getControl('lastName')?.errors && getControl('lastName')?.touched}">
+     
+        <span style="color: red;display: inline-block; text-align: left; width: 100%;"
+          *ngIf="signupForm.get('lastName')?.errors?.['required'] && (signupForm.get('lastName')?.dirty || signupForm.get('lastName')?.touched)">
+        Last Name is required.
+        </span>
         <input type="text" placeholder="Email" name="email" id="email" formControlName="email"
           [ngClass]="{'error': getControl('email')?.errors && getControl('email')?.touched}">
       
@@ -14,7 +27,7 @@
           
           <span *ngIf="getControl('email')?.errors?.['email']" style="color: red;">Please enter a valid email address.</span>
        
-          <input type="text" placeholder="Password" name="password" id="password" formControlName="password"
+          <input type="password" placeholder="Password" name="password" id="password" formControlName="password"
           [ngClass]="{'error': getControl('password')?.errors && getControl('password')?.touched}">
       
           <span style="color: red;display: inline-block; text-align: left; width: 100%;"
@@ -22,23 +35,7 @@
             Password is required.
           </span>
           <span *ngIf="getControl('password')?.errors?.['minlength']" style="color: red;">Password must contain 6 characters</span>
-         
-          <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
-          [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}">
-       
-          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
-            *ngIf="signupForm.get('firstName')?.errors?.['required'] && (signupForm.get('firstName')?.dirty || signupForm.get('firstName')?.touched)">
-            First Name is required.
-          </span>
-
-          
-          <input type="text" placeholder="Last Name" name="lastName" id="lastName" formControlName="lastName"
-          [ngClass]="{'error': getControl('lastName')?.errors && getControl('lastName')?.touched}">
-       
-          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
-            *ngIf="signupForm.get('lastName')?.errors?.['required'] && (signupForm.get('lastName')?.dirty || signupForm.get('lastName')?.touched)">
-          Last Name is required.
-          </span>
+             
           <input type="text" placeholder="Organization Name" name="organization" id="organization" formControlName="organization"
           [ngClass]="{'error': getControl('organization')?.errors && getControl('organization')?.touched}">
        
