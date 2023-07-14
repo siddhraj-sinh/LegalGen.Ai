@@ -6,6 +6,7 @@ import { AppService } from '../../app.service';
 import { MetaDataList } from './meta-data.model';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
   research!: any[];
   showFilterPage: boolean=false;
- 
+  userName!:string;
   isFormCardOpen: boolean = false;
   isSearchVisible:boolean = true;
   newQuery: string = '';
@@ -59,7 +60,7 @@ yearsList: any = [];
 queryForm!: FormGroup;
 courts: any = [{ name: 'Supreme Court of India' }, { name: 'High Court' }]
 
-constructor(private _FB: FormBuilder, private http: HttpClient, private service: AppService,private researchService:ResearchBookService,private userService:UserService) {
+constructor(private _FB: FormBuilder, private http: HttpClient, private service: AppService,private researchService:ResearchBookService,private userService:UserService,private router:Router) {
   // get defaultMetaDataList
 }
 
@@ -70,6 +71,7 @@ ngOnInit(): void {
    this.userService.getUserByToken().subscribe((res)=>{
    // this.userName=res.firstName;
     this.user=res;
+    this.userName=res.firstName;
    })
   this.queryForm = this._FB.group({
     queries: this._FB.array([this._FB.control('', Validators.required)]),
@@ -420,5 +422,13 @@ resetAllMetadataList(): void {
   this.citationsMetaData = [];
   this.respondentMetaData = [];
   this.petitionerMetaData = [];
+}
+
+signOut(){
+  this.userService.logout().subscribe((res)=>{
+    console.log("Signout successfully");
+    this.userService.removeToken();
+    this.router.navigate(['/user/signin']);
+  })
 }
 }
