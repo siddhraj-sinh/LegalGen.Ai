@@ -1,0 +1,84 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logo {
+    margin-right: auto;
+    
+  }
+  
+  .logo img {
+    width: 100px;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px; /* Add this line to move the profile image to the left */
+  }
+  
+  .user-image span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 5px; /* Add this line to move the dropdown to the left */
+  }
+  
+  .dropdown-icon {
+    margin-left: 5px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1;
+    right: 0; /* Align the dropdown to the right */
+    left: auto; /* Reset the left property */
+  }
+  
+  
+  .dropdown-content button {
+    background: none;
+    border: none;
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }

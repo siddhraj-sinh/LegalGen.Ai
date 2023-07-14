@@ -10,6 +10,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { authGuardGuard } from '../services/auth-guard.guard';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     UpdateProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
