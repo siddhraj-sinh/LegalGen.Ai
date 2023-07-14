@@ -1,16 +1,51 @@
 <div class="sidebar">
-  <button class="btn btn-primary add-project" (click)="openFormCard()">+ New Research</button>
-  <ul class="list-group project-list">
-    <li *ngFor="let researches of research" class="list-group-item">
-      <div class="d-flex align-items-start">
-        <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
-        <div class="research-content ms-3">
-          <div class="research-title">{{ researches.name }}</div>
-          <div class="creation-date">{{ researches.dateCreated | date }}</div>
+  <button class="btn btn-primary add-project " (click)="openFormCard()">+ New Research</button>
+  <div class="research-group">
+    <h6 style="color: azure;">Today</h6>
+    <ul class="list-group project-list">
+      <li *ngFor="let research of getTodayResearch()" class="list-group-item">
+        <div class="d-flex align-items-start">
+          <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
+          <div class="research-content ms-3">
+            <div class="research-title">{{ research.name }}</div>
+            <div class="creation-date">{{ research.dateCreated | date }}</div>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Yesterday's research -->
+  <div class="research-group">
+    <h6 style="color: azure;">Yesterday</h6>
+    <ul class="list-group project-list">
+      <li *ngFor="let research of getYesterdayResearch()" class="list-group-item">
+        <div class="d-flex align-items-start">
+          <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
+          <div class="research-content ms-3">
+            <div class="research-title">{{ research.name }}</div>
+            <div class="creation-date">{{ research.dateCreated | date }}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Previous 7 days' research -->
+  <div class="research-group">
+    <h6 style="color: azure;">Previous 7 Days</h6>
+    <ul class="list-group project-list">
+      <li *ngFor="let research of getPrevious7DaysResearch()" class="list-group-item">
+        <div class="d-flex align-items-start">
+          <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
+          <div class="research-content ms-3">
+            <div class="research-title">{{ research.name }}</div>
+            <div class="creation-date">{{ research.dateCreated | date }}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
   <div class="bottom-section">
     <div class="user-image">
       <span>{{ userName.charAt(0) }}</span>
@@ -59,7 +94,7 @@
             <a class="advanced-filter-link">Advance Filter</a>
             <img class="dropdown-icon" width="28px" height="28px" (click)="toggleFilterPage()" style="cursor: pointer;"
               src="../../../assets//arrow_down.svg" />
-          </div> 
+          </div>
         </div>
       </div>
       <div class="advance-filter-popup" *ngIf="isAdvanceFilter">
@@ -175,12 +210,12 @@
 </div>
 <div class="result">
   <ng-container *ngIf="isResultsVisible">
-   
-   
+
+
     <div class="search-container" style="margin-bottom: 10vh;">
       <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
         <div>
-          <img src="../../../assets/app_logo_2.svg"/>
+          <img style="margin-bottom: 10px;" src="../../../assets/app_logo_2.svg" />
         </div>
         <div class="form-group searchgroup" formArrayName="queries"
           *ngFor="let query of queries.controls; let i=index; let last = last">
@@ -199,13 +234,13 @@
           </div>
           <div class="advanced-filter-container">
             <div class="d-flex align-items-center">
-              <a class="advanced-filter-link">Advance Filter</a>
-              <img class="dropdown-icon" width="28px" height="28px" (click)="toggleFilterPage()" style="cursor: pointer;"
-                src="../../../assets//arrow_down.svg" />
-            </div> 
+              <a class="advanced-filter-link" style="margin-top: -175px;margin-left: 520px;">Advance Filter <img
+                  class="dropdown-icon" width="28px" height="40px" (click)="toggleFilterPage()" style="cursor: pointer;"
+                  src="../../../assets//arrow_down.svg" /></a>
+            </div>
           </div>
         </div>
-        <div class="advance-filter-popup" style="z-index: 1;" *ngIf="isAdvanceFilter" >
+        <div class="advance-filter-popup" style="z-index: 1;" *ngIf="isAdvanceFilter">
           <div class="popup-content-ad">
             <div class="row">
               <div class="col-6">
@@ -222,9 +257,9 @@
                 <div class="form-group">
                   <select class="form-control" formControlName="court">
                     <option [ngValue]="null" disabled selected>Court</option>
-  
+
                     <option *ngFor="let court of courts" [value]="court.name">{{ court.name }}</option>
-  
+
                     <!-- <option *ngFor="let court of courts" [value]="court.name">{{ court.name }}</option> -->
                   </select>
                 </div>
@@ -307,14 +342,14 @@
                 <button type="reset" class="reset-button" (click)="resetForm()">Reset</button>
                 <button type="submit" [disabled]="!queryForm.valid" class="submit-button">Submit</button>
               </div>
-  
+
             </div>
             <!-- </div> -->
           </div>
         </div>
       </form>
     </div>
-    <app-search-result ></app-search-result>
+    <app-search-result></app-search-result>
   </ng-container>
 </div>
 <!-- Loader -->
