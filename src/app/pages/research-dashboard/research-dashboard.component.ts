@@ -14,6 +14,7 @@ export class ResearchDashboardComponent implements OnInit{
   isFormCardOpen: boolean = false;
   newQuery: string = '';
   user!:any;
+  userId:any;
   queries!: any[];
   constructor(private userService:UserService,private router:Router,private researchService:ResearchBookService){
    
@@ -21,14 +22,19 @@ export class ResearchDashboardComponent implements OnInit{
   ngOnInit(): void {
 
    this.userService.getUserByToken().subscribe((res)=>{
+    console.log(res);
     this.userName=res.firstName;
     this.user=res;
+    this.userId=res.id;
+  this.getAllResearchBook(res.id);
+
    })
-  this.getAllResearchBook();
+  
   }
 
-  getAllResearchBook(){
-    this.researchService.getAllBook().subscribe((res)=>{
+  getAllResearchBook(userId:any){
+    this.researchService.getReserchByUserId(userId).subscribe((res)=>{
+
       console.log(res);
       this.queries=res;
      })

@@ -10,6 +10,7 @@ export class ResearchBookService {
   constructor(private http:HttpClient) { }
   public queries: any =[];
   public queryList = new BehaviorSubject<any>([]);
+
   addBook(book:any): Observable<any>{
     
      return this.http.post(this.url,book);
@@ -17,6 +18,12 @@ export class ResearchBookService {
   
   getAllBook():Observable<any[]>{
     return this.http.get<any[]>(this.url);
+  }
+
+  getReserchByUserId(userId:any){
+    
+    const apiUrl = `${this.url}/GetResearchBooksByUserId/${userId}`;
+    return this.http.get<any[]>(apiUrl);
   }
    
 

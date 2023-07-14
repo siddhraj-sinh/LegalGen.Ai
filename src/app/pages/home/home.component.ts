@@ -66,13 +66,19 @@ constructor(private _FB: FormBuilder, private http: HttpClient, private service:
 }
 
 ngOnInit(): void {
-  this.researchService.getAllBook().subscribe((res)=>{
-    this.research=res;
-   })
+  // this.researchService.getAllBook().subscribe((res)=>{
+  //   this.research=res;
+  //  })
    this.userService.getUserByToken().subscribe((res)=>{
    // this.userName=res.firstName;
     this.user=res;
     this.userName=res.firstName;
+
+    this.researchService.getReserchByUserId(res.id).subscribe((res)=>{
+
+      console.log(res);
+      this.research=res;
+     })
    })
   this.queryForm = this._FB.group({
     queries: this._FB.array([this._FB.control('', Validators.required)]),
