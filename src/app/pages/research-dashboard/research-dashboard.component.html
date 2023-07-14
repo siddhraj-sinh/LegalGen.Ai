@@ -55,11 +55,16 @@
   <div class="card" *ngFor="let query of queries">
     <div class="card-body d-flex flex-column align-items-start">
       <div class="card-icon mb-3">
+        <a routerLink="/home">
         <i class="fas fa-folder fa-lg" style="color: #fccc77;"></i>
+      </a>
       </div>
       <h4 class="card-title">{{ query.name }}</h4>
       <div class="card-text mt-auto">
         <small>{{ query.dateCreated | date }}</small>
+      
+        <img src="../../../assets/arrow-up-right.svg" style="padding-left: 32px;" />
+     
       </div>
     </div>
   </div>

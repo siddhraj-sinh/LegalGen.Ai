@@ -163,6 +163,7 @@ height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  z-index: -1;
 }
 
 .advanced-filter-link {
