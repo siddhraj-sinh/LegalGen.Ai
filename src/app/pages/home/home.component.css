@@ -27,6 +27,7 @@ height: 100%;
 
 .bottom-section {
   display: flex;
+  margin-bottom: 10vh;
   align-items: center;
   justify-content: space-between;
   padding: 10px;

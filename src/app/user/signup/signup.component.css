@@ -10,7 +10,7 @@
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  
+ 
 }
 
 form {
@@ -85,4 +85,12 @@ button:hover {
 }
 .signin-link-for{
   color: #959595;
+}
+.logo-container {
+  text-align: center; /* Align the image in the center */
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.logo-image {
+  display: inline-block; /* Ensure the image stays inline */
 }

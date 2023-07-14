@@ -68,6 +68,7 @@ ngOnInit(): void {
   this.researchService.getAllBook().subscribe((res)=>{
     this.research=res;
    })
+   
    this.userService.getUserByToken().subscribe((res)=>{
    // this.userName=res.firstName;
     this.user=res;
@@ -99,6 +100,7 @@ ngOnInit(): void {
     this.yearsList.push(startYear++);
   }
 }
+
  // Event handlers
  openFormCard() {
   this.isFormCardOpen = true;
@@ -431,4 +433,32 @@ signOut(){
     this.router.navigate(['/user/signin']);
   })
 }
+getTodayResearch(): any[] {
+  const today = new Date().setHours(0, 0, 0, 0);
+  return this.research.filter((research) => {
+    const researchDate = new Date(research.dateCreated).setHours(0, 0, 0, 0);
+    return researchDate === today;
+  });
+}
+
+getYesterdayResearch(): any[] {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(0, 0, 0, 0);
+  return this.research.filter((research) => {
+    const researchDate = new Date(research.dateCreated).setHours(0, 0, 0, 0);
+    return researchDate === yesterday.getTime();
+  });
+}
+
+getPrevious7DaysResearch(): any[] {
+  const previous7Days = new Date();
+  previous7Days.setDate(previous7Days.getDate() - 7);
+  previous7Days.setHours(0, 0, 0, 0);
+  return this.research.filter((research) => {
+    const researchDate = new Date(research.dateCreated).setHours(0, 0, 0, 0);
+    return researchDate >= previous7Days.getTime();
+  });
+}
+
 }

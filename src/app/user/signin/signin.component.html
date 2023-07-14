@@ -1,9 +1,12 @@
 <div class="background">
+  
     <div class="card">
+      <img src="../../../assets/logo_latest.svg" width="75" height="75" style="margin-left: 17vb;">
       <h1>Welcome back</h1>
   
 <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <div>
+      
         <input type="text" placeholder="Email" name="email" id="email" formControlName="email"
         [ngClass]="{'error': getControl('email')?.errors && getControl('email')?.touched}">
     
