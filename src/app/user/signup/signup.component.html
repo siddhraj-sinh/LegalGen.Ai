@@ -7,7 +7,7 @@
         <input type="text" placeholder="Email" name="email" id="email" formControlName="email"
           [ngClass]="{'error': getControl('email')?.errors && getControl('email')?.touched}">
       
-          <span style="color: red;"
+          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('email')?.errors?.['required'] && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
             Email is required.
           </span>
@@ -17,7 +17,7 @@
           <input type="text" placeholder="Password" name="password" id="password" formControlName="password"
           [ngClass]="{'error': getControl('password')?.errors && getControl('password')?.touched}">
       
-          <span style="color: red;"
+          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('password')?.errors?.['required'] && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
             Password is required.
           </span>
@@ -26,7 +26,7 @@
           <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
           [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}">
        
-          <span style="color: red;"
+          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('firstName')?.errors?.['required'] && (signupForm.get('firstName')?.dirty || signupForm.get('firstName')?.touched)">
             First Name is required.
           </span>
@@ -35,22 +35,22 @@
           <input type="text" placeholder="Last Name" name="lastName" id="lastName" formControlName="lastName"
           [ngClass]="{'error': getControl('lastName')?.errors && getControl('lastName')?.touched}">
        
-          <span style="color: red;"
+          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('lastName')?.errors?.['required'] && (signupForm.get('lastName')?.dirty || signupForm.get('lastName')?.touched)">
           Last Name is required.
           </span>
           <input type="text" placeholder="Organization Name" name="organization" id="organization" formControlName="organization"
           [ngClass]="{'error': getControl('organization')?.errors && getControl('organization')?.touched}">
        
-          <span style="color: red;"
+          <span style="color: red;display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('organization')?.errors?.['required'] && (signupForm.get('organization')?.dirty || signupForm.get('organization')?.touched)">
             Organization Name is required.
           </span>
 
-          <input type="text" placeholder="Phone Numbers" name="contactDetails" id="contactDetails" formControlName="contactDetails"
+          <input type="text" placeholder="Phone Number" name="contactDetails" id="contactDetails" formControlName="contactDetails"
           [ngClass]="{'error': getControl('contactDetails')?.errors && getControl('contactDetails')?.touched}">
        
-          <span style="color: red;"
+          <span style="color: red; display: inline-block; text-align: left; width: 100%;"
             *ngIf="signupForm.get('contactDetails')?.errors?.['required'] && (signupForm.get('contactDetails')?.dirty || signupForm.get('contactDetails')?.touched)">
           Phone Number is required.
           </span>

@@ -21,7 +21,7 @@ h4{
 button {
     width: 120px;
     padding: 10px;
-    background-color: #45a049;
+    background-color: #26A700;
     color: #ffffff;
     border: none;
     border-radius: 3px;
@@ -34,7 +34,7 @@ button {
 .login{
     width: 120px;
     padding: 10px;
-    background-color: #45a049;
+    background-color:#26A700;
     color: #ffffff;
     border: none;
     border-radius: 3px;
@@ -60,10 +60,10 @@ button {
     transition: background-color 0.3s ease;
 }
 
-
+/* 
   button:hover {
     background-color: #26A700;
-  }
+  } */
 
 
 
