@@ -15,6 +15,7 @@ export class ResearchDashboardComponent implements OnInit{
   newQuery: string = '';
   user!:any;
   queries!: any[];
+  newInputQuery: string='';
   constructor(private userService:UserService,private router:Router,private researchService:ResearchBookService){
    
   }
@@ -71,4 +72,10 @@ continueQuery() {
   navigateToChangePassword(){
     this.router.navigate(['user/change-password'])
   }
-}
+  continueInputQuery(): void {
+    // Check if newQuery is empty before proceeding
+    if (!this.newInputQuery) {
+      // Show a warning message or perform any desired action
+      return; // Stop execution if query is not provided
+    }
+}}

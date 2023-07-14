@@ -18,7 +18,7 @@
         <span *ngIf="getControl('email')?.errors?.['email']" style="color: red;">Please enter a valid email address.</span>
     </div>
     <div>
-      <input type="text" placeholder="Password" name="password" id="password" formControlName="password"
+      <input type="password" placeholder="Password" name="password" id="password" formControlName="password"
       
       [ngClass]="{'error': getControl('password')?.errors && getControl('password')?.touched}">
       <br>

@@ -74,11 +74,14 @@
         <h2 class="modal-title">Research Name</h2>
       </div>
       <div class="modal-body" >
-        <textarea [(ngModel)]="newQuery" placeholder="Enter your query" class="form-control form-control-lg bg-light border-ccc no-resize small-text" style="height: 6.5rem; width: 300px;"></textarea>
-<br>
+        <textarea [(ngModel)]="newQuery" placeholder="Enter your query" class="form-control form-control-lg bg-light border-ccc no-resize small-text" style="height: 6.5rem; width: 300px; margin-bottom: 10px;"></textarea>
+ <span *ngIf="!newInputQuery" class="text-danger mt-2">
+  Query is required.
+</span>
         <button (click)="continueQuery()" class="button">Continue</button>
         <button (click)="closeFormCard()" class="button">Close</button>
       </div>
+     
     </div>
   </div>
 </div>
