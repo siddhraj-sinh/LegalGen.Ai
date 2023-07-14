@@ -78,12 +78,14 @@ export class UserService {
     // Get the access token from the local storage
     const token = localStorage.getItem('accessToken');
   
+
     // Create headers and add the token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
   
+    alert("Are you sure want to signout ?")
     // Make a POST request to the logout endpoint with headers
     return this.http.post(url, null, { headers: headers });
   }
