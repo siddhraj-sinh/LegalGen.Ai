@@ -67,6 +67,39 @@
 </div>
 <div class="result">
   <ng-container *ngIf="isResultsVisible">
+    <img src="../../../assets/app_logo_2.svg"/><div class="d-flex align-items-center" >
+        <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter" style="margin-top: -12vh; margin-left: 202vh;">Advance Filter</a>
+        <span class="dropdown-icon" style="margin-top: -12vh;">▼</span>
+      </div>
+    <div class="advanced-filter-container">
+      
+    </div>
+    <div class="search-container" style="margin-bottom: 10vh;">
+      <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
+        <div class="form-group searchgroup" formArrayName="queries"
+          *ngFor="let query of queries.controls; let i=index; let last = last">
+          <div class="input-group">
+  
+            <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
+              [formControlName]="i">
+            <button type=" submit" class="btn-left btn btn-light">
+              <img src="../../../assets/search.png" /></button>
+          </div>
+          <!-- (ngModelChange)="getDefaultMetadataList()" -->
+          <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
+            <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
+              Query is required!
+            </span>
+          </div>
+          <!-- <div class="advanced-filter-container">
+            <div class="d-flex align-items-center">
+              <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
+              <span class="dropdown-icon">▼</span>
+            </div>
+          </div> -->
+        </div>
+      </form>
+    </div>
     <app-search-result></app-search-result>
   </ng-container>
 </div>

@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 } */
-
+.advanced-filter-link {
+  margin-right: 0.5rem;
+}
 .sidebar {
   position: fixed;
   /* top: 0;
