@@ -1,20 +1,11 @@
-/* *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
 .sidebar {
   position: fixed;
-  /* top: 0;
-  left: 0; */
-height: 100%;
+  height: 100%;
   width: 250px;
   background-color: #0A004D;
   padding: 20px;
   overflow-y: auto;
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
 }
 
@@ -30,7 +21,7 @@ height: 100%;
   padding: 10px;
   background-color: #0A004D;
   position: fixed;
-  bottom:0;
+  bottom: 0;
 }
 
 .user-image {
@@ -43,7 +34,7 @@ height: 100%;
   align-items: center;
   cursor: pointer;
   margin-right: 5px;
-  margin-left: 5px; /* Add this line to move the profile image to the left */
+  margin-left: 5px;
 }
 
 .user-image span {
@@ -64,19 +55,16 @@ height: 100%;
 }
 
 .project-list {
-  font-size: 1 px;
   list-style-type: none;
   padding: 0;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
-
 .research-content {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  /* Add this line */
 }
 
 .research-title {
@@ -98,7 +86,6 @@ height: 100%;
   padding: 10px;
   display: flex;
   border-radius: 6px;
-
 }
 
 .project-list .research-item {
@@ -106,7 +93,6 @@ height: 100%;
   align-items: center;
   align-self: flex-start;
 }
-
 
 .project-list .research-item i {
   margin-right: 5px;
@@ -129,7 +115,6 @@ height: 100%;
 }
 
 .bg {
-  /* background-color: whitesmoke; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,10 +122,7 @@ height: 100%;
   height: 100vh;
   margin-left: 250px;
 }
-.enough{
-  display:relative;
-  margin-left:0px;
-}
+
 .search-container {
   position: relative;
 }
@@ -166,33 +148,12 @@ height: 100%;
   z-index: -1;
 }
 
-.advanced-filter-link {
-  margin-right: 5px;
-  color: #a1a0a0;
-  text-decoration: none;
-}
-
 .dropdown-icon {
   font-size: 18px;
 }
 
 .search-input {
   padding-right: 30px;
-  /* Adjust the padding as needed */
-}
-
-.search-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  /* Adjust the position as needed */
-  transform: translateY(-50%);
-  color: #999;
-  /* Adjust the color as needed */
-  cursor: pointer;
-}
-
-.search-input {
   flex-grow: 1;
   border: none;
   outline: none;
@@ -257,16 +218,6 @@ height: 100%;
   color: #999;
 }
 
-/* .advanced-filter-link {
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-  text-align: center;
-  padding-left: 162px;
-  color: #999;
-
-} */
-
 .modal {
   display: flex;
   align-items: center;
@@ -286,15 +237,16 @@ height: 100%;
   align-items: center;
   justify-content: center;
   background-color: #fff;
-padding: 40px;
+  padding: 40px;
   border-radius: 10px;
   animation-duration: 0.3s;
   animation-fill-mode: both;
   text-align: center;
 }
+
 .modal-content input {
-  width: 100%; /* Set the width to 100% to occupy the full width */
-  max-width: 400px; /* Adjust the maximum width as needed */
+  width: 100%;
+  max-width: 400px;
   margin-bottom: 10px;
   padding: 9px;
   height: 38px;
@@ -331,8 +283,8 @@ padding: 40px;
 }
 
 .button {
-   width: 80%;
-  margin-bottom: 15px; 
+  width: 80%;
+  margin-bottom: 15px;
   padding: 10px;
   background-color: #26A700;
   color: #ffffff;
@@ -341,77 +293,5 @@ padding: 40px;
   cursor: pointer;
   font-size: 13px;
   text-transform: uppercase;
-  transition: background-color 0.3s ease; 
-}
-.result {
-  margin-left: 250px; /* Adjust the margin to align with the sidebar */
-  padding: 30px;
-}
-.advance-filter-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(10, 0, 77, 0.5);
-  display: flex;
-  justify-content: right;
-}
-.popup-content-ad {
-  background-color: white;
-  padding: 20px;
-  width: 600px;
-}
-.popup-content-ad h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-.popup-content p {
-  margin-bottom: 24px;
-}
-
-.border-ccc{
-  border-color:#ccc;
-}
-.no-resize {
-  resize: none;
-}
-.small-text {
-  font-size: 12px;
-}
-
-.submit-button {
-  background-color: #21be5d;
-  border: none;
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px;
-  width: 200px;
-}
-
-.reset-button {
-  background-color: #767a78;
-  border: none;
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 200px;
-  
-}
-
-.search-result-input{
-  width: 250px;
-  padding: 14px;
-  padding-left: 25px;
-  background-color: #eeeeee;
-  color: #141313;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: normal;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease
 }
