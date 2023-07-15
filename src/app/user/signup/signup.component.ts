@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,7 +18,7 @@ export class SignupComponent {
   organization='';
   contactDetails='';
 
-  constructor(private user:UserService,private router:Router,private formBuilder:FormBuilder){
+  constructor(private user:UserService,private router:Router,private formBuilder:FormBuilder,private toastr:ToastrService){
     this.signupForm=this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName :['',Validators.required],
@@ -38,6 +40,12 @@ export class SignupComponent {
     console.log(this.signupForm.value);
   this.user.addUser(this.signupForm.value).subscribe(res=>{
     console.log(res);
+    this.toastr.success('Successfully register!', 'Welcome', {
+      timeOut: 1800,        // Duration in milliseconds
+      extendedTimeOut: 500, // Duration after hovering over the toastr
+      closeButton: true,    // Display close button
+      tapToDismiss: false   // Dismiss on click
+    });  
     this.router.navigateByUrl('/user/signin');
   });
 
