@@ -156,6 +156,7 @@ getResultsBasedOnSearch(): void {
       this.loader = false; // disables the loader
       this.isResultsVisible = true;
       this.isSearchVisible=false;
+      this.isAdvanceFilter=false;
     },
     (error) => {
       console.log(error); // temporary log error

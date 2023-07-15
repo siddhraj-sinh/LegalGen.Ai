@@ -21,7 +21,8 @@
   padding: 10px;
   background-color: #0A004D;
   position: fixed;
-  bottom: 0;
+  bottom:0;
+  width: 214px;
 }
 
 .user-image {

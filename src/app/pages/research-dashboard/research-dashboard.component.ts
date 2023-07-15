@@ -77,4 +77,9 @@ continueQuery() {
   navigateToChangePassword(){
     this.router.navigate(['user/change-password'])
   }
+  navigateToHome(){
+    this.router.navigate(['/home'])
+
+  }
 }
+
