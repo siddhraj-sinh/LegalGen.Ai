@@ -36,7 +36,7 @@
 
 <div class="bg" *ngIf="isSearchVisible">
 
-  <img style="margin-bottom: 20px;" src="../../../assets/app_logo_2.svg" />
+  <img style="margin-bottom: 20px; " src="../../../assets/app_logo_2.svg" />
   <div class="search-container">
     <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
       <div class="form-group searchgroup" formArrayName="queries"
@@ -45,8 +45,9 @@
 
           <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
             [formControlName]="i">
-          <button type=" submit" *ngIf="!isAdvanceFilter" class="btn-left btn btn-light">
-            <img src="../../../assets/search.png" /></button>
+          <button type=" submit" *ngIf="!isAdvanceFilter" style="background-color: #0A004D; padding: 10px;">
+            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"></i>
+          </button>
         </div>
         <!-- (ngModelChange)="getDefaultMetadataList()" -->
         <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
@@ -177,10 +178,10 @@
   <ng-container *ngIf="isResultsVisible">
 
 
-    <div class="search-container" style="margin-bottom: 10vh;">
+    <div class="search-container" style="margin-bottom: 16px;">
       <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
         <div>
-          <img src="../../../assets/app_logo_2.svg" />
+          <img src="../../../assets/app_logo_2.svg" style="padding-bottom: 20px;" />
         </div>
         <div class="form-group searchgroup" formArrayName="queries"
           *ngFor="let query of queries.controls; let i=index; let last = last">
@@ -188,8 +189,9 @@
 
             <input type="text" class="form-ctrl form-control search-result-input" placeholder="Tell us about your query"
               [formControlName]="i">
-            <button type=" submit"*ngIf="!isAdvanceFilter" class="btn-left btn btn-light">
-              <img src="../../../assets/search.png" /></button>
+            <button type=" submit"*ngIf="!isAdvanceFilter" style="background-color: #0A004D; padding: 10px;">
+              <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"></i>
+            </button>
           </div>
           <!-- (ngModelChange)="getDefaultMetadataList()" -->
           <div *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
@@ -197,7 +199,7 @@
               Query is required!
             </span>
           </div>
-          <div class="advanced-filter-container">
+          <div class="advanced-filter-container" >
             <div class="d-flex align-items-center">
               <a class="advanced-filter-link" style="margin-top: -175px;margin-left: 520px;">Advance Filter <img
                   class="dropdown-icon" width="28px" height="40px" (click)="toggleFilterPage()" style="cursor: pointer;"
