@@ -4,44 +4,41 @@
     <li *ngFor="let researches of research" class="list-group-item">
       <div class="d-flex align-items-start">
         <i class="fas fa-folder fa-sm" style="color: #fccc77;"></i>
-        <div class="research-content ms-3">
-          <div class="research-title">{{ researches.name }}</div>
-          <div class="creation-date">{{ researches.dateCreated | date }}</div>
+        <div class="ms-3" style="  display: flex; flex-direction: column;  margin-left: 10px;">
+          <div  style="font-weight: bold;  font-size: 14px; text-align: start;">{{ researches.name }}</div>
+          <div style="font-size: 12px; color: gray; text-align: start;">{{ researches.dateCreated | date }}</div>
         </div>
       </div>
     </li>
   </ul>
   <div class="bottom-section">
-    <div class="user-image">
-      <span>{{ userName.charAt(0) }}</span>
+    <div style="width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;">
+      <span style="font-size: 16px;
+      font-weight: bold;
+      color: #333333;">{{ userName.charAt(0) }}</span>
     </div>
-    <span class="user-name">{{userName}}</span>
+  <span style=" font-weight: bold; margin-right: 5px; color: white; ">{{userName}}</span>
     <i class="fas fa-sign-out-alt signout-icon" (click)="signOut()"></i>
   </div>
 </div>
 
-
-<!-- <div class="bg">
-  <img src="../../../assets/app_logo_2.png" />
-  <div class="search-container">
-    <input type="text" class="search-input" placeholder="Tell us about your query" name="email" id="email"
-      [(ngModel)]="searchQuery" (ngModelChange)="performSearch()">
-    <i class="fa fa-search search-icon" (click)="performSearch()"></i>
-    <div class="advanced-filter-container">
-      <a class="advanced-filter-link" (click)="toggleFilterPage()" routerLink="/filter">Advance Filter</a>
-      <span class="advanced-filter-label">Advanced Filters</span>
-    </div>
-  </div>
-</div> -->
-
 <div class="bg" *ngIf="isSearchVisible">
 
   <img style="margin-bottom: 20px; " src="../../../assets/app_logo_2.svg" />
-  <div class="search-container">
+  <div style="  position: relative;">
     <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
       <div class="form-group searchgroup" formArrayName="queries"
         *ngFor="let query of queries.controls; let i=index; let last = last">
-        <div class="input-group">
+        <div style="display: flex;">
 
           <input type="text" class="form-ctrl form-control" placeholder="Tell us about your query"
             [formControlName]="i">
@@ -67,7 +64,7 @@
         <div class="popup-content-ad">
           <div class="row">
             <div class="col-6">
-              <h3 class="enough">Advance Filters</h3>
+              <h3 style=" display: relative; margin-left: 0px;">Advance Filters</h3>
             </div>
             <div class="col-6 text-end">
               <button class="btn btn-secondary" (click)="toggleFilterPage()">Close</button>
@@ -178,18 +175,24 @@
   <ng-container *ngIf="isResultsVisible">
 
 
-    <div class="search-container" style="margin-bottom: 16px;">
+    <div  style="position: relative; margin-bottom: 16px;">
       <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
         <div>
           <img src="../../../assets/app_logo_2.svg" style="padding-bottom: 20px;" />
         </div>
         <div class="form-group searchgroup" formArrayName="queries"
           *ngFor="let query of queries.controls; let i=index; let last = last">
-          <div class="input-group" style="width: 80%;">
+          <div style="width: 80%;display: flex;">
 
             <input type="text" class="form-ctrl form-control search-result-input" placeholder="Tell us about your query"
-              [formControlName]="i">
-            <button type=" submit"*ngIf="!isAdvanceFilter" style="background-color: #0A004D; padding: 10px;">
+              [formControlName]="i" style="flex-grow: 1;
+              border: none;
+              outline: none;
+              padding: 5px;
+              font-size: 14px;
+              text-align: left;
+              margin-left: 5px;">
+            <button type=" submit" *ngIf="!isAdvanceFilter" style="background-color: #0A004D; padding: 10px;">
               <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"></i>
             </button>
           </div>
@@ -199,7 +202,7 @@
               Query is required!
             </span>
           </div>
-          <div class="advanced-filter-container" >
+          <div class="advanced-filter-container">
             <div class="d-flex align-items-center">
               <a class="advanced-filter-link" style="margin-top: -175px;margin-left: 520px;">Advance Filter <img
                   class="dropdown-icon" width="28px" height="40px" (click)="toggleFilterPage()" style="cursor: pointer;"
@@ -338,7 +341,7 @@
 
         <textarea [(ngModel)]="newQuery" placeholder="Enter your query"
           class="form-control form-control-lg bg-light border-ccc no-resize small-text"
-          style="height: 6.5rem; width: 300px; border-radius: 3px; margin-bottom: 10px"></textarea>
+          style="height: 6.5rem; width: 300px; border-radius: 3px; margin-bottom: 10px;font-size: 12px;"></textarea>
         <button (click)="continueQuery()" class="button">Continue</button>
         <button (click)="closeFormCard()" class="button">Close</button>
       </div>

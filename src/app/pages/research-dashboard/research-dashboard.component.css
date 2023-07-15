@@ -1,201 +1,181 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  .border-ccc{
-    border-color:#ccc;
-  }
-  .no-resize {
-    resize: none;
-  }
-  .small-text {
-    font-size: 12px;
-  }
-  
-  .logo {
-    margin-right: auto;
-    
-  }
-  
-  .logo img {
-    width: 100px;
-  }
-  
-  .profile {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-  }
-  
-  .user-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 5px;
-    margin-left: 5px; /* Add this line to move the profile image to the left */
-  }
-  
-  .user-image span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-  }
-  
-  .user-name {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 5px; /* Add this line to move the dropdown to the left */
-  }
-  
-  .dropdown-icon {
-    margin-left: 5px;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    z-index: 1;
-    right: 0; /* Align the dropdown to the right */
-    left: auto; /* Reset the left property */
-  }
-  
-  
-  .dropdown-content button {
-    background: none;
-    border: none;
-    color: black;
-    text-decoration: none;
-    display: block;
-    padding: 5px 0;
-    cursor: pointer;
-  }
-  
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 180px;
-    height: 160px;
-    border: 1px solid #ccc;
-    background-color: #EEEEEE;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .card-icon {
-    margin-bottom: 10px;
-  }
-  
-  .card-text {
-    margin-top: auto;
-  }
-  
-  
-  
-  .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.border-ccc {
+  border-color: #ccc;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.logo {
+  margin-right: auto;
+
+}
+
+.logo img {
+  width: 100px;
+}
+
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.user-image span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1;
+  right: 0;
+}
+
+
+.dropdown-content button {
+  background: none;
+  border: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 180px;
+  height: 160px;
+  border: 1px solid #ccc;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+.card-text {
+  margin-top: auto;
+}
+
+
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
   padding: 35px;
-    border-radius: 10px;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    text-align: center;
-  }
-  .modal-content input {
-    width: 100%; /* Set the width to 100% to occupy the full width */
-    max-width: 400px; /* Adjust the maximum width as needed */
-    margin-bottom: 10px;
-    padding: 9px;
-    height: 38px;
-  }
-  
-  @keyframes modalFadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes modalFadeOut {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-  }
-  
-  .modal-content {
-    animation-name: modalFadeIn;
-  }
-  
-  .modal-content.ng-leave {
-    animation-name: modalFadeOut;
+  border-radius: 10px;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+  padding: 9px;
+  height: 38px;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
 
-  .button {
-     width: 80%;
-    margin-bottom: 15px; 
-    padding: 10px;
-    background-color: #26A700;
-    color: #ffffff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 13px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease; 
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
- 
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.modal-content {
+  animation-name: modalFadeIn;
+}
+
+.modal-content.ng-leave {
+  animation-name: modalFadeOut;
+}
+
+.button {
+  width: 80%;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #26A700;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
