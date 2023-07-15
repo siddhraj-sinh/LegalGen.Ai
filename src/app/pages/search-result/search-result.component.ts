@@ -7,7 +7,12 @@ import { AppService } from '../../app.service';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent {
-
+  public textArray: string[] = [
+    'unless the contrary is proved, that the holder of a cheque received the cheque of the nature referred to in section 138 for the discharge, in whole or in part, of any debt or other liability.'
+  ,'unless the contrary is proved, that the holder of a cheque received the cheque of the nature referred to in section 138 for the discharge, in whole or in part, of any debt or other liability.'
+  ,'unless the contrary is proved, that the holder of a cheque received the cheque of the nature referred to in section 138 for the discharge, in whole or in part, of any debt or other liability.'
+  
+  ];
   currentPage: number = 1;
   changedPage: number = 0;
   pageSize: number = 10;

@@ -1,7 +1,8 @@
 
 <div class="background">
     <div class="card">
-      <h2>Register</h2>
+      <img src="../../../assets/app_logo.png" style="height: 70px; width: 70px; margin-left: 110px;">
+      <h2>Create Your Account</h2>
       <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
         <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
         [ngClass]="{'error': getControl('firstName')?.errors && getControl('firstName')?.touched}">
