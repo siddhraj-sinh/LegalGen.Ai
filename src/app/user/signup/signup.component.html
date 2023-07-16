@@ -1,6 +1,8 @@
 <div class="background">
   <div class="card">
-    <img src="../../../assets/app_logo.png" style="height: 70px; width: 70px; margin-left: 110px;">
+    <div style="text-align: center; margin-bottom: 10px;">
+      <img src="../../../assets/logo_fg.png" style="height: 70px; width: 70px;">
+    </div>
     <h2>Create Your Account</h2>
     <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
       <input type="text" placeholder="Fisrt Name" name="firstName" id="firstName" formControlName="firstName"
@@ -37,7 +39,7 @@
         *ngIf="signupForm.get('contactDetails')?.errors?.['required'] && (signupForm.get('contactDetails')?.dirty || signupForm.get('contactDetails')?.touched)">
         Phone Number is required.
       </span>
-      <span *ngIf="getControl('contactDetails')?.errors?.['pattern']" style="color: red;">Please enter a valid Phone
+      <span *ngIf="getControl('contactDetails')?.errors?.['pattern']" style="color: red; display: inline-block; text-align: left; width: 100%;">Please enter a valid Phone
         Number.</span>
         <input type="text" placeholder="Organization Name" name="organization" id="organization"
         formControlName="organization"

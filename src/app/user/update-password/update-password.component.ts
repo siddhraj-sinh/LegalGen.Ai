@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import{AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators,ValidatorFn, ValidationErrors}from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-password',
@@ -13,7 +14,7 @@ export class UpdatePasswordComponent {
   successMessage?: string;
   errorMessage?: string;
   token!:string;
-  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute,private userService:UserService) {
+  constructor(private formBuilder: FormBuilder,private router:ActivatedRoute,private userService:UserService,private toastr:ToastrService) {
    
     this.token = this.router.snapshot.params['token'];
   }
@@ -52,12 +53,24 @@ export class UpdatePasswordComponent {
       // Add your sign-in logic here, such as calling an authentication service
     
       this.userService.updatePassword(this.token,newPassword).subscribe((res)=>{
-        this.successMessage = 'Password updated successfully.';
-        this.errorMessage = '';
+        // this.successMessage = 'Password updated successfully.';
+        // this.errorMessage = '';
         this.updateForm.reset();   
+        this.toastr.success('Password updated successfully!', 'Success', {
+          timeOut: 1800,        // Duration in milliseconds
+          extendedTimeOut: 500, // Duration after hovering over the toastr
+          closeButton: true,    // Display close button
+          tapToDismiss: false   // Dismiss on click
+        });  
       },(error)=>{
-        this.successMessage = '';
-        this.errorMessage = 'An error occurred. Please try again later.';
+        // this.successMessage = '';
+        // this.errorMessage = 'An error occurred. Please try again later.';
+        this.toastr.error('An error occurred. Please try again later.', 'Failed', {
+          timeOut: 1800,        // Duration in milliseconds
+          extendedTimeOut: 500, // Duration after hovering over the toastr
+          closeButton: true,    // Display close button
+          tapToDismiss: false   // Dismiss on click
+        });
       });
     }
   }
