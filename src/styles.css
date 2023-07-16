@@ -3,6 +3,7 @@
 @import '~roboto-fontface/css/roboto/roboto-fontface.css';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
 
+@import '/node_modules/ngx-toastr/toastr.css';
 
 body {
     font-family: 'Nunito Sans', sans-serif;

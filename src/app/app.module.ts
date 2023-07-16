@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchResultComponent } from './pages/search-result/search-result.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
     LandingPageComponent,
     ResearchDashboardComponent,
     AdvanceFiltersComponent,
-    SearchResultComponent
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +30,12 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,NoopAnimationsModule,NgSelectModule
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    NgSelectModule,
+    ToastrModule.forRoot({}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

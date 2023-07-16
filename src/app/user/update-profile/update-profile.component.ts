@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-profile',
@@ -12,7 +13,7 @@ export class UpdateProfileComponent implements OnInit {
   updateProfileForm!:FormGroup
   user: any;
 
-  constructor(private userService:UserService,private router:Router){
+  constructor(private userService:UserService,private router:Router,private toastr:ToastrService){
     this.updateProfileForm = new FormGroup({
       firstName: new FormControl('',Validators.required),
       lastName:  new FormControl('',Validators.required),
@@ -71,6 +72,12 @@ export class UpdateProfileComponent implements OnInit {
     console.log(updatedUser);
     this.userService.updateUserDetails(this.user.id,updatedUser).subscribe(() => {
       // Handle success
+      this.toastr.success('Profile updated successfully!', 'Success', {
+        timeOut: 1800,        // Duration in milliseconds
+        extendedTimeOut: 500, // Duration after hovering over the toastr
+        closeButton: true,    // Display close button
+        tapToDismiss: false   // Dismiss on click
+      });  
       this.router.navigate(['/dashboard']);
       console.log('Profile updated successfully!');
     });

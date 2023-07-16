@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class UserService {
   url = 'https://localhost:7024/api/User';
   private currentUserKey = 'currentUser';
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient,private router:Router,private toastr:ToastrService) {}
 
   addUser(user: any): Observable<any> {
     return this.http.post(this.url, user);
@@ -65,10 +66,23 @@ export class UserService {
       (response) => {
         const token = response.accessToken;
         this.saveToken(token);
+        this.toastr.success('Successfully logged in!', 'Welcome', {
+          timeOut: 1800,        // Duration in milliseconds
+          extendedTimeOut: 500, // Duration after hovering over the toastr
+          closeButton: true,    // Display close button
+          tapToDismiss: false   // Dismiss on click
+        });  
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        console.log('Login failed. Please try again.'); // Handle error
+        console.log('Login failed.'); // Handle error
+        this.toastr.error('Please try again!', 'Login failed.', {
+          timeOut: 1800,        // Duration in milliseconds
+          extendedTimeOut: 500, // Duration after hovering over the toastr
+          closeButton: true,    // Display close button
+          tapToDismiss: false   // Dismiss on click
+        });  
+     
       }
     );
   }
@@ -86,6 +100,12 @@ export class UserService {
     });
   
     alert("Are you sure want to signout ?")
+    this.toastr.success('Successfully logged out!', 'Goodbye', {
+      timeOut: 1800,        // Duration in milliseconds
+      extendedTimeOut: 500, // Duration after hovering over the toastr
+      closeButton: true,    // Display close button
+      tapToDismiss: false   // Dismiss on click
+    });  
     // Make a POST request to the logout endpoint with headers
     return this.http.post(url, null, { headers: headers });
   }
