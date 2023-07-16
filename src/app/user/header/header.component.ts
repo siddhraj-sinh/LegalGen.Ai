@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
   navigateToChangePassword(){
     this.router.navigate(['user/change-password'])
   }
+  navigateToDashboard(){
+    this.router.navigate(['/dashboard'])
+
+  }
   logout(){
     this.userService.logout().subscribe((res)=>{
       this.userService.removeToken();

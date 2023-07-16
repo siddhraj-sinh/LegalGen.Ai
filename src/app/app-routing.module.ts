@@ -29,8 +29,11 @@ const routes: Routes = [
   {
     path:"filter",
     component:AdvanceFiltersComponent
+  },
+  {
+    path:"**",
+    component:LandingPageComponent
   }
-
 ];
 
 @NgModule({
